@@ -46,32 +46,85 @@
     src: url('../assets/fonts/iransans-fonts/iransans/eot/IRANSansWeb.eot?#iefix') format('embedded-opentype'), /* IE6-8 */ url('../assets/fonts/iransans-fonts/iransans/woff2/IRANSansWeb.woff2') format('woff2'), /* FF39+,Chrome36+, Opera24+*/ url('../assets/fonts/iransans-fonts/iransans/woff/IRANSansWeb.woff') format('woff'), /* FF3.6+, IE9, Chrome6+, Saf5.1+*/ url('../assets/fonts/iransans-fonts/iransans/ttf/IRANSansWeb.ttf') format('truetype');
 }
 
+.iranSans {
+    font-family:IRANSans;
+}
+
 nav {
-    max-height: 60px
+    flex: 0 1 auto;
+    max-height: 60px;
+    background-color: white;
 }
 
-/* .nav>li {
+span {
     display: inline-block;
-    width:initial;
-    white-space: nowrap;
-  } */
-
-/* nav > a > img {
-    max-width:100%;
-    max-height:100%;
-} */
-
-.navbar.navbar-inverse {
-    border: none;
 }
-.navbar .navbar-brand {
-  padding-top: 0px;
+
+footer {
+    display: flex;
+    background-color: #363636 !important;
+    height: 60px;
+    flex: 0 1 60px;
+    /* vertical-align: middle; */
+
+    /* clear: both;
+    position: relative;
+    height: 40px;
+    margin-top: -40px; */
+
 }
+
 .navbar .navbar-brand img {
     max-height: 55px;
-    padding-top: 2px;
-    
+    padding-top: 2px;    
 }
+
+.drop-shadow {
+    text-shadow: 2px 2px 4px #000000;
+}
+
+.Aligner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.Aligner-item {
+    max-width: 100%;
+    /* align-self: flex-middle; */
+}
+
+.Aligner-item--top {
+    align-self: flex-start;
+}
+
+.Aligner-item--bottom {
+    align-self: flex-end;
+}
+
+.center_in_parent {
+    margin: 0 auto;
+}
+
+#content
+{
+    height: 100%;
+    flex: 1 1 auto;
+    overflow: auto;
+}
+
+#main-div {
+    display: flex;
+    flex-flow: column;
+    align-items: stretch;
+}
+
+#profile-image {
+    max-width: 200px;
+    max-height: 200px;
+}
+
+
 
 
 
