@@ -116,6 +116,33 @@ footer {
     color
 }
 
+.nav_bottom {
+    background-color:#17a2b8;
+    height: 150px;
+}
+
+.img_profile {
+    position: inherit;
+    top: -70px;
+    right: 10%;
+    padding: .5rem;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    max-width: 100%;
+    height: auto;
+    border-radius: 1rem!important;
+}
+
+.profile_name {
+    position: inherit;
+    right: 30%;
+    top: -200px;
+}
+.profile_name_description {
+    position: inherit;
+    right: 30%;
+    top: -200px;
+}
 #content
 {
     height: 100%;
@@ -132,14 +159,6 @@ footer {
 #profile-image {
     max-width: 200px;
     max-height: 200px;
-}
-
-#image{width:400px;height:400px;}
-#image #image_mask{
-    color: #fff;
-    text-shadow: 1px 1px 1px #ccc;
-    font-size: 1.5em;
-
 }
 
 .fling-minislide {width:350px; height:300px; overflow:hidden; position:relative; }
