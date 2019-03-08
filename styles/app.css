@@ -113,11 +113,11 @@ footer {
 .danger_text {
     color: #f00;
     fill: #f00;
-    color
+    /* color */
 }
 
 .nav_bottom {
-    background-color:#17a2b8;
+    background-color: #17a2b8;
     height: 150px;
 }
 
