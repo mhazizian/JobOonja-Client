@@ -2,60 +2,30 @@
 <html dir="rtl">
 
 <head>
-	<!-- Meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<!-- Styles  -->
 	<link rel="stylesheet" href="https://cdn.rtlcss.com/bootstrap/v4.2.1/css/bootstrap.min.css"
 		integrity="sha384-vus3nQHTD+5mpDiZ4rkEPlnkcyTP+49BhJ4wJeJunw06ZAp+wzzeBPUXr42fi8If" crossorigin="anonymous">
 	<link href="../styles/app.css" type="text/css" rel="stylesheet">
-
-	<!-- Scripts -->
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-		crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
-		integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-		crossorigin="anonymous"></script>
-	<script src="https://cdn.rtlcss.com/bootstrap/v4.2.1/js/bootstrap.min.js"
-		integrity="sha384-a9xOd0rz8w0J8zqj1qJic7GPFfyMfoiuDjC9rqXlVOcGO/dmRqzMn34gZYDTel8k"
-		crossorigin="anonymous"></script>
-
 
 	<title>Jon Onja</title>
 </head>
 
 <body class="bg-light">
 	<div id="main-div">
-		<nav class="navbar navbar-expand-lg navbar-light sticky-top">
-			<div class="container">
-				<a class="navbar-brand" href="#">
-					<img src="../assets/logo/logo v1.png" class="d-inline-block" alt="">
-				</a>
-				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
-					aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-				<div class="collapse navbar-collapse" id="navbarText">
-					<ul class="navbar-nav ml-auto">
-						<li class="nav-item active">
-							<a class="nav-link" href="#">
-								<span class="iranSans">
-									حساب کاربری
-								</span>
-							</a>
-						</li>
-						<li class="nav-item active">
-							<a class="nav-link" href="#">
-								<span class="iranSans">
-									خروج
-								</span>
-							</a>
-						</li>
-					</ul>
-				</div>
-			</div>
+		<nav class="navbar navbar-expand-lg">
+			<a class="navbar-brand navbar-right" href="#">
+				<img src="../assets/logo/logo v1.png" class="d-inline-block" alt="">
+			</a>
+		    <ul class="navbar-nav">
+		      <li class="nav-item"><a class="nav-link" href="#">
+				  حساب کاربری
+			   </a></li>
+		      <li class="nav-item"><a class="nav-link" href="#">
+				  خروج
+			   </a></li>
+		    </ul>
 		</nav>
 
 		<div class="container" id="content">
@@ -75,10 +45,10 @@
 								</div>
 								<div>
 									<span>
-										<img src="../assets/icon/svg/003-deadline.svg" width="10em" alt="">
+										<img id="image_mask" src="../assets/icon/svg/003-deadline.svg" width="10em" alt="">
 									</span>
 									<span>
-										<p class="iranSans">مهلت تمام شده است</p>
+										<p class="iranSans danger_text">مهلت تمام شده است</p>
 									</span>
 								</div>
 								<div>
