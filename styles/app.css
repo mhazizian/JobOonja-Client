@@ -83,42 +83,13 @@ footer {
     padding-top: 2px;
 }
 
-.drop-shadow {
-    text-shadow: 2px 2px 4px #000000;
-}
-
-.Aligner {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-}
-.Aligner-item {
-    max-width: 100%;
-    /* align-self: flex-middle; */
-}
-
-.Aligner-item--top {
-    align-self: flex-start;
-}
-
-.Aligner-item--bottom {
-    align-self: flex-end;
-}
-
-.center_in_parent {
-    margin: 0 auto;
-}
-
-.danger_text {
-    color: #f00;
-    fill: #f00;
-    /* color */
-}
-
 .nav_bottom {
     background-color: #17a2b8;
     height: 150px;
+}
+
+.drop-shadow {
+    text-shadow: 2px 2px 4px #000000;
 }
 
 .img_profile {
