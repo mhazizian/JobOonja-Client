@@ -12,9 +12,6 @@ img {
     vertical-align: unset;
 }
 
-span {
-    display: inline-block;
-}
 
 footer {
     display: flex;
@@ -72,8 +69,8 @@ footer {
 }
 
 #profile-image {
-    max-width: 200px;
-    max-height: 200px;
+    max-width: 180px;
+    max-height: 180px;
 }
 
 .fling-minislide {width:350px; height:300px; overflow:hidden; position:relative; }
