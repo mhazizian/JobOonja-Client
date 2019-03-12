@@ -20,6 +20,9 @@
 </head>
 
 <body>
+    <div class="bg-light-blue" id="div-bg-blue-light"></div>
+    <div class="align-self-stretch bg-light" id="div-bg-light"></div>
+
     <div id="main-div">
         <nav class="navbar navbar-expand-lg sticky-top navbar-light shadow-sm">
             <div class="container">
@@ -41,25 +44,27 @@
             </div>
         </nav>
 
-        <!-- #TODO: fix scrolling problem -->
-        <div class="bg-light-blue" id="div-bg-blue-light"></div>
-        <div class="bg-light" id="div-bg-light"></div>
-
-        <div class="container d-flex flex-column">
+        <div class="container d-flex flex-column mb-5">
             <div class="card d-flex flex-column shadow" id="content">
                 <div class="d-flex d-inline-flex card-body">
                     <div class="card-body">
                         <img src="../assets/profile1.png" id="profile-image" class="img-fluid" alt="">
                     </div>
                     <div class="d-flex flex-column mr-3 card-body">
-                        <b>
+                        <strong>
                             <div>
                                 <h1 class="iranSans">پروژه طراحی سایت جاب‌اونجا</h2>
                             </div>
-                            <div>
+                            <!-- <div>
                                 <p class="iranSans text-danger mb-0">
                                     <i class="mr-1 flaticon-deadline"></i>
                                     مهلت تمام شده است
+                                </p>
+                            </div> -->
+                            <div>
+                                <p class="iranSans text-muted mb-0">
+                                    <i class="mr-1 flaticon-deadline"></i>
+                                    زمان باقی مانده: <span class="unbold-text">۱۷ دقیقه و ۲۵ ثانیه</span>
                                 </p>
                             </div>
                             <div>
@@ -68,16 +73,16 @@
                                     بودجه : ۲۵۰۰ تومان
                                 </p>
                             </div>
-                            <div>
+                            <!-- <div>
                                 <p class="iranSans text-success mb-0">
                                     <i class="mr-1 flaticon-check-mark"></i>
                                     برنده : وحید محمدی
                                 </p>
-                            </div>
+                            </div> -->
                             <div>
-                                <p class="iranSans">توضیحات</p>
+                                <h4 class="iranSans my-3">توضیحات</h4>
                             </div>
-                        </b>
+                        </strong>
                         <div>
                             <p class="iranSans">لوازم ایپسوم متن ساختگی با سادگی نا مفهوم از صنعت چاپ وب با
                                 استفاده از طاحان
@@ -100,26 +105,72 @@
                                 </b>
                             </p>
                         </div>
-                        <div class="align-self-end">
-                            <div class="d-inline-flex">
-                                <div class="card border-light shadow-sm">
-                                    <div class="m-2 text-body">
-                                        <span class="badge bg-light-blue text-info py-2 my-0"> 17</span>
-                                        TypeScript
-                                    </div>
+                        <div class="align-self-end" id="project-skill">
+                            <div class="d-inline-flex bg-white rounded-corners border-light shadow-sm">
+                                <div class="m-1 px-1 text-body">
+                                    <span class="iranSans badge bg-light-blue text-info py-2 px-2  my-0"> 2</span>
+                                    TypeScript
                                 </div>
                             </div>
+                            <div class="d-inline-flex bg-white rounded-corners border-light shadow-sm">
+                                <div class="m-1 px-1 text-body">
+                                    <span class="iranSans badge bg-light-blue text-info py-2 px-2  my-0"> 16</span>
+                                    JavaScript
+                                </div>
+                            </div>
+                            <div class="d-inline-flex bg-white rounded-corners border-light shadow-sm">
+                                <div class="m-1 px-1 text-body">
+                                    <span class="iranSans badge bg-light-blue text-info py-2 px-2  my-0"> 3</span>
+                                    CSS
+                                </div>
+                            </div>
+                            <div class="d-inline-flex bg-white rounded-corners border-light shadow-sm">
+                                <div class="m-1 px-1 text-body">
+                                    <span class="iranSans badge bg-light-blue text-info py-2 px-2  my-0"> 5</span>
+                                    HTML
+                                </div>
+                            </div>
+
                         </div>
                     </div>
 
                 </div>
                 <div class="text-dark bg-white card-body" style="border-top-style: ridge;border-top-width: 1px;">
-                    <p class="iranSans text-danger mb-0">
-                        <!-- #TODO: fix arragment problem for flaticon-danger -->
-                        <i class="flaticon-danger"></i>
+                    <!-- <p class="iranSans text-danger mb-0">
+                        <i class="flaticon-danger mr-2"></i>
                         مهلت ارسال پیشنهاد برای این پروژه به اتمام رسیده است!
-                    </p>
+                    </p> -->
+
+                    <!-- <p class="iranSans text-success mb-0">
+                        <i class="flaticon-check-mark mr-2"></i>
+                        شما قبلا پیشنهاد خود را ثبت کرده اید.
+                    </p> -->
+
+
+                    <div class="d-flex-row">
+                        <h4 class="iranSans text-body mb-0">
+                            ثبت پیشنهاد
+                        </h4>
+                        <div class="d-flex d-inline-flex my-3">
+                            <div class="input-group mx-2 rounded-corners border-info">
+                                <input type="text" class="form-control iranSans text-muted border-blue border-right-0"
+                                    placeholder="پیشنهاد خود را وارد کنید">
+                                <div class="input-group-append">
+                                    <span
+                                        class="input-group-text  pb-1 bg-white iranSans text-info border-blue border-left-0">
+                                        تومان
+                                    </span>
+                                </div>
+
+                            </div>
+                            <div>
+                                <button type="button" class="btn bg-blue text-white iranSans">ارسال</button>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
+
             </div>
         </div>
 

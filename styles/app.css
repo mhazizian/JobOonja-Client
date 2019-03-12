@@ -2,6 +2,7 @@
     font-family:IRANSans;
 }
 
+
 nav {
     /* flex: 0 1 auto; */
     max-height: 60px;
@@ -23,6 +24,7 @@ footer {
     max-height: 55px;
     padding-top: 2px;
 }
+
 
 .nav_bottom {
     background-color: #17a2b8;
@@ -64,6 +66,28 @@ footer {
     background-color: rgb(187, 239, 241);
 }
 
+.unbold-text {
+    font-weight: normal;
+}
+
+.border-blue {
+    border: 2px solid rgb(44, 192, 214);
+}
+
+.bg-blue {
+    background-color: rgb(44, 192, 214);
+}
+
+
+.rounded-corners {
+    border-radius: 5px;
+}
+
+#project-skill > div {
+    margin-right: 0.7em;
+    font-family:IRANSans;
+}
+
 #content
 {
     margin-top: 3.5em;
@@ -93,7 +117,7 @@ footer {
     position: absolute;
     left: 0px;
     top: 25%;
-    height: 75%;
+    min-height: 75%;
     width: 100%;
     box-shadow: 0px -1px 10px rgba(0, 0, 0, 0.2);
     z-index: -1;
