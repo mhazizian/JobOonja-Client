@@ -20,11 +20,19 @@ footer {
     height: 65px;
 }
 
-.navbar .navbar-brand img {
+.navbar-item {
     max-height: 55px;
-    padding-top: 2px;
 }
 
+/* .navbar .navbar-brand img {
+    max-height: 55px;
+    padding-top: 2px;
+} */
+
+.px-p15 {
+    padding-left: 15%;
+    padding-right: 15%;
+}
 
 .nav_bottom {
     background-color: #17a2b8;
@@ -83,6 +91,10 @@ footer {
     border-radius: 5px;
 }
 
+.rounded-corners-big {
+    border-radius: 16px;
+}
+
 #project-skill > div {
     margin-right: 0.7em;
     font-family:IRANSans;
@@ -92,12 +104,6 @@ footer {
 {
     margin-top: 3.5em;
     margin-bottom: 3.5em;
-}
-
-#main-div {
-    display: flex;
-    flex-flow: column;
-    align-items: stretch;
 }
 
 #profile-image {
@@ -110,6 +116,7 @@ footer {
     left: 0px;
     top: 0px;
     height: 25%;
+    /* height: 5em; */
     width: 100%;
     z-index: -3;
 }
