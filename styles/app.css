@@ -2,9 +2,9 @@
     font-family:IRANSans;
 }
 
+html, body {height: 100%;}
 
 nav {
-    /* flex: 0 1 auto; */
     max-height: 60px;
     background-color: white;
 }
@@ -23,11 +23,6 @@ footer {
 .navbar-item {
     max-height: 55px;
 }
-
-/* .navbar .navbar-brand img {
-    max-height: 55px;
-    padding-top: 2px;
-} */
 
 .px-p15 {
     padding-left: 15%;
@@ -114,21 +109,13 @@ footer {
 #div-bg-blue-light {
     position: absolute;
     left: 0px;
-    top: 0px;
-    height: 25%;
-    /* height: 5em; */
+    top: 0px; 
     width: 100%;
-    z-index: -3;
-}
-#div-bg-light  {
-    position: absolute;
-    left: 0px;
-    top: 25%;
-    min-height: 75%;
-    width: 100%;
-    box-shadow: 0px -1px 10px rgba(0, 0, 0, 0.2);
+    height: 15em;
+    box-shadow: inset 0px -1px 5px rgba(0, 0, 0, 0.2);
     z-index: -1;
 }
+
 
 .fling-minislide {width:350px; height:300px; overflow:hidden; position:relative; }
 .fling-minislide img{ position:absolute; animation:fling-minislide 20s infinite; opacity:0; width: 100%; height: auto;}
