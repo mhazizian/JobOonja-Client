@@ -50,17 +50,6 @@ footer {
     border-radius: 1rem!important;
 }
 
-.profile_name {
-    position: inherit;
-    right: 30%;
-    top: -200px;
-}
-.profile_name_description {
-    position: inherit;
-    right: 30%;
-    top: -200px;
-}
-
 .light-blue {
     color: rgb(187, 239, 241);
 }
@@ -81,13 +70,19 @@ footer {
     background-color: rgb(44, 192, 214);
 }
 
-
 .rounded-corners {
     border-radius: 5px;
 }
 
 .rounded-corners-big {
     border-radius: 16px;
+}
+
+.profile-description {
+    line-height: 24pt;
+    font-size: large;
+    text-align: justify;
+    text-justify: inter-word;
 }
 
 #project-skill > div {
@@ -111,7 +106,7 @@ footer {
     left: 0px;
     top: 0px; 
     width: 100%;
-    height: 15em;
+    height: 13.5em;
     box-shadow: inset 0px -1px 5px rgba(0, 0, 0, 0.2);
     z-index: -1;
 }

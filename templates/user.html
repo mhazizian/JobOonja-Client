@@ -2,51 +2,139 @@
 <html dir="rtl">
 
 <head>
+	<!-- meta-tag -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+	<!-- fonts -->
+	<link href="../assets/fonts/iransans-fonts/fonts.scss" type="text/scss" rel="stylesheet">
+	<link href="../assets/fonts/flaticont/flaticon.css" type="text/css" rel="stylesheet">
+
+	<!-- css-style -->
 	<link rel="stylesheet" href="https://cdn.rtlcss.com/bootstrap/v4.2.1/css/bootstrap.min.css"
 		integrity="sha384-vus3nQHTD+5mpDiZ4rkEPlnkcyTP+49BhJ4wJeJunw06ZAp+wzzeBPUXr42fi8If" crossorigin="anonymous">
+	<link href="../styles/normilize.css" type="text/css" rel="stylesheet">
 	<link href="../styles/app.css" type="text/css" rel="stylesheet">
+
+
 	<title>Jon Onja</title>
 </head>
 
 <body class="bg-light">
+
+
+	<div class="bg-light-blue" id="div-bg-blue-light"></div>
+
+
 	<div id="main-div">
-		<nav class="navbar navbar-expand-lg sticky-top navbar-light">
-			<div class="container">
-				<a class="navbar-brand navbar-right" href="#">
-					<img src="../assets/logo/logo v1.png" class="d-inline-block" alt="">
-				</a>
-				<ul class="navbar-nav  ml-auto">
-					<li class="nav-item active"><a class="nav-link iranSans" href="#">
-							حساب کاربری
-						</a></li>
-					<li class="nav-item active"><a class="nav-link iranSans" href="#">
-							خروج
-						</a></li>
-				</ul>
+		<nav class="sticky-top navbar-light shadow-sm pt-1">
+			<div class="d-flex flex-row container">
+				<div class="justify-content-start">
+					<a class="" href="#">
+						<img src="../assets/logo/logo v1.png" class="navbar-item" alt="">
+					</a>
+				</div>
+				<div class="justify-content-end d-inline-flex align-items-center ml-auto">
+					<a class="nav-link iranSans text-body" href="#">
+						حساب کاربری
+					</a>
+					<a class="nav-link iranSans text-body" href="#">
+						خروج
+					</a>
+				</div>
+
 			</div>
 		</nav>
-		<div class="nav_bottom">
-		</div>
-		<div class="card">
-			<img class="img_profile" src="../assets/pictures/richard.jpeg" alt="profile page" height="190" width="190">
-			<span class="profile_name">
-				<h3><b>ریچارد شیردل</b></h3>
-			</span>
-			<span class="profile_name_description">
-				بازنشسته
-			</span>
-			<div class="profile_description">
-				<p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها
-					و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و
-					کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و
-					آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه
-					ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید داشت که
-					تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل حروفچینی
-					دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.</p>
+
+		<div class="container d-flex flex-column mb-5">
+			<div class="d-flex flex-column" id="content">
+
+				<div class="d-flex d-inline-flex">
+					<div class="card p-2 rounded-corners-big border-0 shadow-sm">
+						<!-- <span class="p-0"> -->
+						<img src="../assets/pictures/profile/profile1.png" id="profile-image"
+							class="rounded-corners-big" alt="">
+						<!-- </span> -->
+					</div>
+					<div>
+						asdfasdf
+					</div>
+				</div>
+				<div>
+					<div class="mt-4">
+						<p class="iranSans font-weight-light profile-description">لورم ایپسوم متن ساختگی با تولید سادگی
+							نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.
+							چاپگرها
+							و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد
+							نیاز و
+							کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته،
+							حال و
+							آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان
+							رایانه
+							ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. در این صورت می توان امید
+							داشت که
+							تمام و دشواری موجود در ارائه راهکارها و شرایط سخت تایپ به پایان رسد وزمان مورد نیاز شامل
+							حروفچینی
+							دستاوردهای اصلی و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.
+						</p>
+					</div>
+				</div>
+				<div class="d-flex flex-row  align-items-baseline">
+					<h3 class="iranSans mr-3">مهارت ها:</h3>
+					<div class="card d-flex flex-row bg-white p-1">
+						<div class="dropdown mr-2 border">
+							<button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton"
+								data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<span class="iranSans pr-4">-- انتخاب مهارت --</span>
+							</button>
+							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+								<a class="dropdown-item" href="#">Action</a>
+								<a class="dropdown-item" href="#">Another action</a>
+								<a class="dropdown-item" href="#">Something else here</a>
+							</div>
+						</div>
+						<button type="button" class="btn btn-info iranSans">افزودن مهارت</button>
+					</div>
+				</div>
+
+				<div class="align-self-end mt-3" id="project-skill">
+					<div class="d-inline-flex bg-white rounded-corners border-light shadow-sm mb-2">
+						<div class="m-1 px-1 text-body">
+							<span class="iranSans badge bg-danger text-white py-2 px-2  my-0"> -</span>
+							TypeScript
+						</div>
+					</div>
+					<div class="d-inline-flex bg-white rounded-corners border-light shadow-sm">
+						<div class="m-1 px-1 text-body">
+							<span class="iranSans badge bg-light-blue text-info py-2 px-2  my-0"> 16</span>
+							JavaScript
+						</div>
+					</div>
+					<div class="d-inline-flex bg-white rounded-corners border-light shadow-sm">
+						<div class="m-1 px-1 text-body">
+							<span class="iranSans badge bg-light-blue text-info py-2 px-2  my-0"> 3</span>
+							CSS
+						</div>
+					</div>
+					<div class="d-inline-flex bg-white rounded-corners border-light shadow-sm">
+						<div class="m-1 px-1 text-body">
+							<span class="iranSans badge bg-light-blue text-info py-2 px-2  my-0"> 5</span>
+							HTML
+						</div>
+					</div>
+
+				</div>
+
 			</div>
 		</div>
+
+		<footer class="text-muted d-flex align-items-center justify-content-center fixed-bottom">
+			<div class="iranSans drop-shadow">&copy; تمامی حقوق این سایت متعلق به
+				جاب‌اونجامی‌باشد
+			</div>
+		</footer>
 	</div>
+
 </body>
+
+</html>
