@@ -85,6 +85,10 @@ footer {
     text-justify: inter-word;
 }
 
+.p-indented {
+    text-indent: 1em;
+}
+
 #project-skill > div {
     margin-right: 0.7em;
     font-family:IRANSans;
