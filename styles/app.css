@@ -81,9 +81,20 @@ footer {
 .profile-description {
     line-height: 24pt;
     font-size: large;
+}
+
+.projet-description {
+    line-height: 20pt;
+}
+
+.profile-description, .projet-description {
     text-align: justify;
     text-justify: inter-word;
 }
+
+
+
+
 
 .p-indented {
     text-indent: 1em;
