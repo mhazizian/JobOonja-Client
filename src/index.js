@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import User from './components/User'
+import Project from './components/Project'
 import App from './App';
 import About from './About'
 import { Router, Route, browserHistory } from 'react-router';
@@ -21,6 +22,8 @@ ReactDOM.render((
     <Route path="/" component={App}/>
     <Route path="/user" component={User}/>
     <Route path="/user/*" component={User}/>
+    <Route path="/project" component={Project}/>
+    <Route path="/project/*" component={Project}/>
   </Router>
 ), document.getElementById('root'));
 // serviceWorker.unregister();

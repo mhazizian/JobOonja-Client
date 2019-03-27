@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios';
 import '../fonts/iransans-fonts/fonts.scss';
 import '../fonts/flaticont/flaticon.css';
-// import '../styles/all.css';
+import '../styles/all.css';
 import '../styles/bootstrap.min.css';
 import '../styles/normilize.css';
 import '../styles/app.css';
@@ -19,7 +19,6 @@ export default class User extends React.Component {
     };
     render() {
         const {id, firstName, lastName, jobTitle, PictureUrl, skills, bio} = this.state;
-        console.log(PictureUrl);
         return (
             <React.Fragment>
                 <div id="main-div">
@@ -85,82 +84,57 @@ export default class User extends React.Component {
                                     <button type="button" className="btn btn-info iranSans">افزودن مهارت</button>
                                 </div>
                             </div>
-                            {skills.map(skill => {
-                                const {name, point} = skill;
-                                return (
-                                    <div className="align-self-end mt-3" id="project-skill">
-                                        <div className="d-inline-flex bg-white rounded-corners border-light shadow-sm">
-                                            <div className="m-1 px-1 text-body">
-                                                <span className="iranSans badge bg-light-blue text-info py-2 px-2  my-0"> {point}</span>
-                                                {name}
+                            <div className="align-self-end mt-3" id="project-skill">
+                                {skills.map(skill =>
+                                    {
+                                        const {name, point} = skill;
+                                        return (
+                                            <div className="d-inline-flex bg-white rounded-corners border-light shadow-sm">
+                                                <div className="m-1 px-1 text-body">
+                                                    <span className="iranSans badge bg-light-blue text-info py-2 px-2  my-0"> {point}</span>
+                                                    {name}
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>);
-                                })
-                            }
+                                        );
+                                    })
+                                }
+                            </div>
                         </div>
                     </div>
 
                     <footer className="text-muted d-flex align-items-center justify-content-center fixed-bottom">
-                            <div className="iranSans drop-shadow">&copy; تمامی حقوق این سایت متعلق به
-                                جاب‌اونجامی‌باشد
-                            </div>
-                        </footer>
+                        <div className="iranSans drop-shadow">&copy; تمامی حقوق این سایت متعلق به
+                            جاب‌اونجامی‌باشد
+                        </div>
+                    </footer>
                 </div>
             </React.Fragment>
         );
-            // <React.Fragment>
-                // <div>
-                //   <h2>{id}, {firstName}, {lastName}, {jobTitle}, {PictureUrl},
-                //
-                //    {skills.map(skill => {
-                //     const {name, point} = skill;
-                //     return (
-                //       <div>
-                //         <h2>{name}</h2>
-                //         <p>{point}</p>
-                //         <hr />
-                //       </div>
-                //     );
-                //   })}
-                //     {bio}</h2>
-                // </div>
-
-
-
-
-            // </React.Fragment>
-            // );
-        }
-        getUser(userID){
-            axios.get('http://localhost:8080/Proj_IE/user/' + userID)
-            .then(
-                // function(response) {
-                // console.log(response.data.firstName);
-                // alert(this.user.firstName);
-                // alert();
-                response =>
-                this.setState ({
-                    id: response.data.id,
-                    firstName: response.data.firstName,
-                    lastName: response.data.lastName,
-                    jobTitle: response.data.jobTitle,
-                    PictureUrl: response.data.PictureUrl,
-                    skills: response.data.skills,
-                    bio: response.data.bio
-                })
-
-                // }
-            )
-            .catch(
-                function(error) {
-                    console.log(error.stack);
-                })
+    }
+    getUser(userID){
+        axios.get('http://localhost:8080/Proj_IE/user/' + userID)
+        .then(
+            response =>
+            this.setState ({
+                id: response.data.id,
+                firstName: response.data.firstName,
+                lastName: response.data.lastName,
+                jobTitle: response.data.jobTitle,
+                PictureUrl: response.data.PictureUrl,
+                skills: response.data.skills,
+                bio: response.data.bio
+            })
+        )
+        .catch(
+            function(error) {
+                console.log(error.stack);
             }
-            componentDidMount() {
-                var currentURL = window.location.href;
-                var splitURL = currentURL.split("/");
-                var userID = splitURL[splitURL.length - 1];
-                this.getUser(userID);
-            }
-        }
+        )
+    }
+    componentDidMount() {
+        var currentURL = window.location.href;
+        var splitURL = currentURL.split("/");
+        var userID = splitURL[splitURL.length - 1];
+        this.getUser(userID);
+    }
+}
