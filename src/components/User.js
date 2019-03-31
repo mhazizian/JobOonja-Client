@@ -6,7 +6,10 @@ import '../styles/all.css';
 import '../styles/bootstrap.min.css';
 import '../styles/normilize.css';
 import '../styles/app.css';
-
+import Popper from 'popper.js'
+// require("font-awesome")
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+require("bootstrap");
 export default class User extends React.Component {
     state = {
         id: "",
@@ -15,10 +18,50 @@ export default class User extends React.Component {
         jobTitle: "",
         PictureUrl: "",
         skills: [],
-        bio: ""
+        bio: "",
+        currentID: "",
+        otherSkills: [],
+        endorseSkills: []
     };
+    constructor() {
+        super();
+        this.addSkill = this.addSkill.bind(this);
+        this.addEndorse = this.addEndorse.bind(this);
+    }
+    addEndorse(name) {
+        axios({
+            method: 'post',
+            url: 'http://localhost:8080/Proj_IE/addEndorse?userId=' + this.state.id + '&currentUserId=' + this.state.currentID + '&skillName=' + name
+        })
+        .then(function(response) {
+            // alert(response);
+            window.location.reload();
+        })
+        .catch(function(response) {
+            // alert(response);
+        })
+    }
+    addSkill(name) {
+        axios({
+            method: 'post',
+            url: 'http://localhost:8080/Proj_IE/addSkillUser?user=' + this.state.id + '&skill=' + name
+        })
+        .then(function(response) {
+            alert(response);
+            window.location.reload();
+        })
+        .catch(function(response) {
+            // alert(response);
+        })
+    }
     render() {
-        const {id, firstName, lastName, jobTitle, PictureUrl, skills, bio} = this.state;
+        const {id, firstName, lastName, jobTitle, PictureUrl, skills, bio, currentID, otherSkills, endorseSkills} = this.state;
+        var isCurrnet;
+        if(currentID == id) {
+            isCurrnet = true;
+        } else {
+            isCurrnet = false;
+        }
         return (
             <React.Fragment>
                 <div id="main-div">
@@ -67,23 +110,36 @@ export default class User extends React.Component {
                                     </p>
                                 </div>
                             </div>
-                            <div className="d-flex flex-row  align-items-baseline">
-                                <h3 className="iranSans mr-3">مهارت ها:</h3>
-                                <div className="card d-flex flex-row bg-white p-1">
-                                    <div className="dropdown mr-2 border">
-                                        <button className="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton"
-                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <span className="iranSans pr-5">-- انتخاب مهارت --</span>
-                                        </button>
-                                        <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <a className="dropdown-item" href="#">Action</a>
-                                            <a className="dropdown-item" href="#">Another action</a>
-                                            <a className="dropdown-item" href="#">Something else here</a>
+                            {
+                                (isCurrnet)?(
+                                    <div className="d-flex flex-row  align-items-baseline">
+                                        <h3 className="iranSans mr-3">مهارت ها:</h3>
+                                        <div className="card d-flex flex-row bg-white p-1">
+                                            <div className="dropdown mr-2 border">
+                                                <button className="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton"
+                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <span className="iranSans pr-5">-- انتخاب مهارت --</span>
+                                                </button>
+                                                <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                    {otherSkills.map(otherSkill =>
+                                                        {
+                                                            const {name, point} = otherSkill;
+                                                            return(
+                                                                <button className="dropdown-item" onClick={() => this.addSkill(name)}>{name}</button>
+                                                            );
+                                                        })
+                                                    }
+                                                </div>
+                                            </div>
+
+
+                                            <button type="button" className="btn btn-info iranSans">افزودن مهارت</button>
                                         </div>
                                     </div>
-                                    <button type="button" className="btn btn-info iranSans">افزودن مهارت</button>
-                                </div>
-                            </div>
+                                ):(
+                                    <span></span>
+                                )
+                            }
                             <div className="align-self-end mt-3" id="project-skill">
                                 {skills.map(skill =>
                                     {
@@ -91,7 +147,13 @@ export default class User extends React.Component {
                                         return (
                                             <div className="d-inline-flex bg-white rounded-corners border-light shadow-sm">
                                                 <div className="m-1 px-1 text-body">
-                                                    <span className="iranSans badge bg-light-blue text-info py-2 px-2  my-0"> {point}</span>
+                                                    {
+                                                        (isCurrnet || endorseSkills.indexOf(name) >= 0)?(
+                                                            <span className="iranSans badge bg-light-blue text-info py-2 px-2  my-0"> {point}</span>
+                                                        ):(
+                                                            <button className="btn btn-success btn-sm" onClick={() => this.addEndorse(name)}> <i className="fas fa-plus"></i></button>
+                                                        )
+                                                    }
                                                     {name}
                                                 </div>
                                             </div>
@@ -116,13 +178,16 @@ export default class User extends React.Component {
         .then(
             response =>
             this.setState ({
-                id: response.data.id,
-                firstName: response.data.firstName,
-                lastName: response.data.lastName,
-                jobTitle: response.data.jobTitle,
-                PictureUrl: response.data.PictureUrl,
-                skills: response.data.skills,
-                bio: response.data.bio
+                id: JSON.parse(response.data.message).id,
+                firstName: JSON.parse(response.data.message).firstName,
+                lastName: JSON.parse(response.data.message).lastName,
+                jobTitle: JSON.parse(response.data.message).jobTitle,
+                PictureUrl: JSON.parse(response.data.message).PictureUrl,
+                skills: JSON.parse(response.data.message).skills,
+                bio: JSON.parse(response.data.message).bio,
+                currentID: JSON.parse(response.data.details).currentID,
+                otherSkills: JSON.parse(response.data.details).otherSkills,
+                endorseSkills: JSON.parse(response.data.details).endorseSkills
             })
         )
         .catch(

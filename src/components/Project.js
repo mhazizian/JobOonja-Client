@@ -37,11 +37,11 @@ export default class Project extends React.Component {
             url: 'http://localhost:8080/Proj_IE/bid?bidAmount=' + this.state.bidMount + '&projectId=' + this.state.id
         })
         .then(function(response) {
-            alert(response);
+            // alert(response);
             window.location.reload();
         })
         .catch(function(response) {
-            alert(response);
+            // alert(response);
         })
     }
     render() {
