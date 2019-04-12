@@ -54,8 +54,42 @@ footer {
     border-radius: 1rem!important;
 }
 
+.home-sidebard-img {
+    /* max-width: 100%; */
+    height: 4em;
+}
+
+.home-list-project-img {
+    /* max-width: 100%; */
+    height: 10em;
+}
+
+.font-size-description {
+    font-size: 11pt;
+}
+
+.font-size-small {
+    font-size: 10pt;
+}
+
+.font-size-big {
+    font-size: 13pt;
+}
+
 .light-blue {
     color: rgb(187, 239, 241);
+}
+
+.dark-blue {
+    color: rgb(16, 133, 140);
+}
+
+.w-65 {
+    width: 65%;
+}
+
+.bg-dark-blue {
+    background-color: rgb(16, 133, 140);
 }
 
 .bg-light-blue {
@@ -104,6 +138,10 @@ footer {
     text-indent: 1em;
 }
 
+.p-indented-2 {
+    text-indent: 2em;
+}
+
 #project-skill > div {
     margin-right: 0.7em;
     font-family:IRANSans;
@@ -121,11 +159,12 @@ footer {
 }
 
 #div-bg-blue-light {
-    position: absolute;
+    position: fixed;
     left: 0px;
     top: 0px;
     width: 100%;
-    height: 13.5em;
+    /* height: 13.5em; */
+    height: 19.25em;
     box-shadow: inset 0px -1px 5px rgba(0, 0, 0, 0.2);
     z-index: -1;
 }
@@ -140,20 +179,14 @@ footer {
     z-index: -1;
 }
 
+#border_bottom_style {
+    border-bottom-style: solid;border-top-width: 2px;
+}
+
 .ParallelogramBlue {
     position: absolute;
     right: 185.5px;
     top: 72px;
-}
-
-.border-top-style1 {
-    border-top-style: dashed;
-    border-top-width: 2px;
-}
-
-.border-top-style2 {
-    border-top-style: ridge;
-    border-top-width: 1px;
 }
 
 .fling-minislide {width:100%; height:100%; overflow:hidden; position:relative; }

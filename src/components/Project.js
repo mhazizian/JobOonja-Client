@@ -6,6 +6,8 @@ import '../styles/all.css';
 import '../styles/bootstrap.min.css';
 import '../styles/normilize.css';
 import '../styles/app.css';
+import Footer from '../components/partails/Footer.js';
+import JoboonjaNavBar from '../components/partails/JoboonjaNavBar.js';
 
 export default class Project extends React.Component {
 
@@ -19,7 +21,8 @@ export default class Project extends React.Component {
         deadline: 0,
         winner: "",
         hasBided: false,
-        bidMount: null
+        bidMount: null,
+        currentID: ""
     };
     constructor() {
         super();
@@ -45,38 +48,26 @@ export default class Project extends React.Component {
         })
     }
     render() {
-        const {id, title, description, imageUrl, budget, skills, deadline, winner, hasBided, bidMount} = this.state;
+        const {id, title, description, imageUrl, budget, skills, deadline, winner, hasBided, bidMount, currentID} = this.state;
         var deltaTime = deadline - Date.now();
         var deadProject = deltaTime < 0;
         var projectHasBided = hasBided;
+        var currentUserLinkValue = "http://localhost:3000/user/" + currentID;
+        var hasImage = true;
+        if(imageUrl == null) {
+            hasImage = false;
+        }
         return (
             <React.Fragment>
                 <div id="main-div">
-                    <nav className="sticky-top navbar-light shadow-sm pt-1">
-                        <div className="d-flex flex-row container">
-                            <div className="justify-content-start">
-                                <a className="" href="#">
-                                    <img src="../assets/logo/logo v1.png" className="navbar-item" alt=""/>
-                                </a>
-                            </div>
-                            <div className="justify-content-end d-inline-flex align-items-center ml-auto">
-                                <a className="nav-link iranSans text-body" href="#">
-                                    حساب کاربری
-                                </a>
-                                <a className="nav-link iranSans text-body" href="#">
-                                    خروج
-                                </a>
-                            </div>
-
-                        </div>
-                    </nav>
+                    <JoboonjaNavBar currentUserLink={currentUserLinkValue}></JoboonjaNavBar>
                     <div className="bg-light-blue" id="div-bg-blue-light"></div>
 
                     <div className="container d-flex flex-column mb-5">
                         <div className="card d-flex flex-column shadow mb-5 rounded-corners" id="content">
                             <div className="d-flex d-inline-flex card-body">
                                 <div className="card-body">
-                                    <img src="../assets/pictures/project/profile1.png" id="profile-image" className="img-fluid border"
+                                    <img src={(hasImage)?imageUrl:'../assets/pictures/project/profile1.png'} id="profile-image" className="img-fluid border"
                                         alt=""/>
                                 </div>
                                 <div className="d-flex flex-column card-body">
@@ -180,11 +171,7 @@ export default class Project extends React.Component {
                         </div>
                     </div>
 
-                    <footer className="text-muted d-flex align-items-center justify-content-center fixed-bottom">
-                        <div className="iranSans drop-shadow">&copy; تمامی حقوق این سایت متعلق به
-                            جاب‌اونجامی‌باشد
-                        </div>
-                    </footer>
+                    <Footer></Footer>
                 </div>
             </React.Fragment>);
         }
@@ -207,7 +194,8 @@ export default class Project extends React.Component {
                         skills: JSON.parse(response.data.message).skills,
                         deadline: JSON.parse(response.data.message).deadline,
                         winner: JSON.parse(response.data.message).winner,
-                        hasBided: JSON.parse(response.data.details).hasBided
+                        hasBided: JSON.parse(response.data.details).hasBided,
+                        currentID : JSON.parse(response.data.details).currentID
                     })
                 // }
             )
@@ -225,19 +213,26 @@ export default class Project extends React.Component {
         }
     }
     function convertMiliSecToDate(time) {
-        // var year = time.getFullYear();
         var year = Math.floor(time / (365 * 12 * 60 * 60 * 1000));
         time = time - year * 365 * 12 * 60 * 60 * 1000;
         var month = Math.floor(time / 30 / 12 / 60 / 60 / 1000);
-        time = time - month * 30 * 12 * 60 * 60 * 1000
+        time = time - month * 30 * 12 * 60 * 60 * 1000;
         var today = Math.floor(time / 12 / 60 / 60 / 1000);
-        time = time - today * 12 * 60 * 60 * 1000
+        time = time - today * 12 * 60 * 60 * 1000;
         var hour = Math.floor(time / 60 / 60 / 1000);
-        time = time - hour * 60 * 60 * 1000
+        time = time - hour * 60 * 60 * 1000;
         var minute = Math.floor(time / 60 / 1000);
-        time = time - minute * 60 * 1000
+        time = time - minute * 60 * 1000;
         var second = Math.floor(time / 1000);
         if(year != 0) {
             return year + " سال" + month + "ماه " + today + "روز " + hour + "ساعت " + minute + "دقیقه " + second + "ثانیه";
+        } else if(month != 0) {
+            return month + "ماه " + today + "روز " + hour + "ساعت " + minute + "دقیقه " + second + "ثانیه";
+        } else if(today != 0) {
+            return today + "روز " + hour + "ساعت " + minute + "دقیقه " + second + "ثانیه";
+        } else if(hour != 0) {
+            return hour + "ساعت " + minute + "دقیقه " + second + "ثانیه";
+        } else if(minute != 0) {
+            return second + "ثانیه";
         }
     }

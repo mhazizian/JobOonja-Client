@@ -7,9 +7,10 @@ import '../styles/bootstrap.min.css';
 import '../styles/normilize.css';
 import '../styles/app.css';
 import Popper from 'popper.js'
-// require("font-awesome")
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Footer from '../components/partails/Footer.js';
+import JoboonjaNavBar from '../components/partails/JoboonjaNavBar.js';
 require("bootstrap");
+
 export default class User extends React.Component {
     state = {
         id: "",
@@ -47,7 +48,7 @@ export default class User extends React.Component {
             url: 'http://localhost:8080/Proj_IE/addSkillUser?user=' + this.state.id + '&skill=' + name
         })
         .then(function(response) {
-            alert(response);
+            // alert(response);
             window.location.reload();
         })
         .catch(function(response) {
@@ -56,33 +57,21 @@ export default class User extends React.Component {
     }
     render() {
         const {id, firstName, lastName, jobTitle, PictureUrl, skills, bio, currentID, otherSkills, endorseSkills} = this.state;
+        var currentUserLinkValue = "http://localhost:3000/user/" + currentID;
         var isCurrnet;
         if(currentID == id) {
             isCurrnet = true;
         } else {
             isCurrnet = false;
         }
+        var hasImage = true;
+        if(PictureUrl == null) {
+            hasImage = false;
+        }
         return (
             <React.Fragment>
                 <div id="main-div">
-                    <nav className="sticky-top navbar-light shadow-sm pt-1">
-                        <div className="d-flex flex-row container">
-                            <div className="justify-content-start">
-                                <a className="" href="#">
-                                    <img src="../assets/logo/logo v1.png" className="navbar-item" alt=""/>
-                                </a>
-                            </div>
-                            <div className="justify-content-end d-inline-flex align-items-center ml-auto">
-                                <a className="nav-link iranSans text-body" href="#">
-                                    حساب کاربری
-                                </a>
-                                <a className="nav-link iranSans text-body" href="#">
-                                    خروج
-                                </a>
-                            </div>
-
-                        </div>
-                    </nav>
+                    <JoboonjaNavBar currentUserLink={currentUserLinkValue}></JoboonjaNavBar>
                     <div className="bg-light-blue" id="div-bg-blue-light"></div>
 
                     <div className="container d-flex flex-column mb-5">
@@ -90,7 +79,7 @@ export default class User extends React.Component {
 
                             <div className="d-flex d-inline-flex">
                                 <div className="card p-2 rounded-corners-big border-0 shadow-sm">
-                                    <img src={'' + PictureUrl} id="profile-image"
+                                    <img src={(hasImage)?PictureUrl:'../assets/pictures/profile/noImage.png'} id="profile-image"
                                         className="rounded-corners-big" alt=""/>
                                     <img src="../assets/pictures/profile/ParallelogramBlue.png" id="ParallelogramBlue" className="ParallelogramBlue" alt=""/>
                                 </div>
@@ -133,7 +122,7 @@ export default class User extends React.Component {
                                             </div>
 
 
-                                            <button type="button" className="btn btn-info iranSans">افزودن مهارت</button>
+
                                         </div>
                                     </div>
                                 ):(
@@ -164,11 +153,7 @@ export default class User extends React.Component {
                         </div>
                     </div>
 
-                    <footer className="text-muted d-flex align-items-center justify-content-center fixed-bottom">
-                        <div className="iranSans drop-shadow">&copy; تمامی حقوق این سایت متعلق به
-                            جاب‌اونجامی‌باشد
-                        </div>
-                    </footer>
+                    <Footer></Footer>
                 </div>
             </React.Fragment>
         );

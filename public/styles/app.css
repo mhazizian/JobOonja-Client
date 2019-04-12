@@ -179,6 +179,10 @@ footer {
     z-index: -1;
 }
 
+#border_bottom_style {
+    border-bottom-style: solid;border-top-width: 2px;
+}
+
 .ParallelogramBlue {
     position: absolute;
     right: 185.5px;
