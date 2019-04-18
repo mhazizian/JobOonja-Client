@@ -71,7 +71,7 @@ export default class UserDispatcher {
 
     deleteSkill(currentUserID, skillName) {
         axios({
-            method: 'post',
+            method: 'delete',
             url: ConfigManager.SERVER_ADDRESS + 'deleteSkillUser' + '?user=' + currentUserID + '&skill=' + skillName
         })
             .then(function (response) {
