@@ -29,18 +29,8 @@ export default class User extends React.Component {
         this.addSkill = this.addSkill.bind(this);
         this.addEndorse = this.addEndorse.bind(this);
     }
-    addEndorse(name) {
-        axios({
-            method: 'post',
-            url: 'http://localhost:8080/Proj_IE/addEndorse?userId=' + this.state.id + '&currentUserId=' + this.state.currentID + '&skillName=' + name
-        })
-        .then(function(response) {
-            // alert(response);
-            window.location.reload();
-        })
-        .catch(function(response) {
-            // alert(response);
-        })
+    addEndorse(skillName) {
+        endorseUser(this.state.id, this.state.currentID, skillName)
     }
     addSkill(name) {
         axios({
