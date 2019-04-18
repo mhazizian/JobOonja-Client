@@ -10,7 +10,6 @@ import Footer from '../components/partails/Footer.js';
 import JoboonjaNavBar from '../components/partails/JoboonjaNavBar.js';
 import ProjectDispatcher from '../req_dispatcher/project_dispatcher.js'
 import TimeConversion from '../utils/time_conversion.js'
-import { log } from 'util';
 
 export default class Project extends React.Component {
 
@@ -53,6 +52,8 @@ export default class Project extends React.Component {
         if (imageUrl == null) {
             hasImage = false;
         }
+        console.log(winner);
+
         return (
             <React.Fragment>
                 <div id="main-div">
@@ -85,7 +86,7 @@ export default class Project extends React.Component {
                                                         <p className="iranSans text-muted mb-0">
                                                             <i className="mr-1 flaticon-deadline"></i>
                                                             زمان باقی مانده:
-                                                        <span className="unbold-text">
+                                                            <span className="unbold-text ml-1">
                                                                 {new TimeConversion().miliSecToPersionDate(deltaTime)}
                                                             </span>
                                                         </p>
@@ -95,9 +96,20 @@ export default class Project extends React.Component {
                                         <div>
                                             <p className="iranSans text-info mb-0">
                                                 <i className="mr-1 flaticon-money-bag"></i>
-                                                {budget}
+                                                بودجه: {budget} تومان
                                             </p>
                                         </div>
+                                        {
+                                            winner ? (
+                                                <div>
+                                                    <p class="iranSans text-success mb-0">
+                                                        <i class="mr-1 flaticon-check-mark"></i>
+                                                        برنده : {winner}
+                                                    </p>
+                                                </div>
+
+                                            ) : (<div></div>)
+                                        }
                                         <div>
                                             <h4 className="iranSans my-3">توضیحات</h4>
                                         </div>
