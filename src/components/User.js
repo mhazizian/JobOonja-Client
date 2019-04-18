@@ -1,7 +1,5 @@
 "use strict";
 import React from 'react'
-import '../fonts/iransans-fonts/fonts.scss';
-import '../fonts/flaticont/flaticon.css';
 import '../styles/bootstrap.min.css';
 import '../styles/normilize.css';
 import '../styles/app.css';
@@ -30,7 +28,7 @@ export default class User extends React.Component {
         super();
         // this.addEndorse = this.addEndorse.bind(this);
     }
-    
+
     render() {
         const { id, firstName, lastName, jobTitle, PictureUrl, skills, bio, currentID, otherSkills, endorseSkills } = this.state;
         var currentUserLinkValue = "http://localhost:3000/user/" + currentID;
@@ -80,20 +78,15 @@ export default class User extends React.Component {
                                     <div className="d-flex flex-row  align-items-baseline">
                                         <h3 className="iranSans mr-3">مهارت ها:</h3>
                                         <div className="card d-flex flex-row bg-white p-1">
-                                            <div className="dropdown mr-2 border">
-                                                <button className="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton"
+                                            <SkillList skills={otherSkills} userId={this.state.id}></SkillList>
+
+                                            {/* <button className="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton"
                                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     <span className="iranSans pr-5">-- انتخاب مهارت --</span>
                                                 </button>
-                                                <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                    {otherSkills.map(otherSkill => {
-                                                        return (
-                                                            <SkillList skill={otherSkill} userId={this.state.id}></SkillList>
-                                                        );
-                                                    })
-                                                    }
-                                                </div>
-                                            </div>
+                                                <div className="dropdown-menu" aria-labelledby="dropdownMenuButton"> */}
+                                            {/* </div> */}
+                                            {/* </div> */}
 
 
 

@@ -1,6 +1,4 @@
 import React from 'react';
-import '../fonts/iransans-fonts/fonts.scss';
-import '../fonts/flaticont/flaticon.css';
 import '../styles/bootstrap.min.css';
 import '../styles/normilize.css';
 import '../styles/app.css';

@@ -1,7 +1,5 @@
 "use strict";
 import React from 'react'
-import '../fonts/iransans-fonts/fonts.scss';
-import '../fonts/flaticont/flaticon.css';
 import '../styles/bootstrap.min.css';
 import '../styles/normilize.css';
 import '../styles/app.css';
@@ -37,7 +35,7 @@ export default class Project extends React.Component {
         });
     }
     sendAmountBid() {
-        new ProjectDispatcher.sendAmountBid(
+        new ProjectDispatcher().sendAmountBid(
             this.state.id,
             this.state.bidMount
         );
