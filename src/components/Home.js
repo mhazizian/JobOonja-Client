@@ -18,7 +18,7 @@ export default class Home extends React.Component {
 
     componentDidMount() {
         new ProjectDispatcher().getProjects(this);
-        new UserDispatcher().getUsers(this);
+        new UserDispatcher().gerUsers(this);
     }
 
     render() {
