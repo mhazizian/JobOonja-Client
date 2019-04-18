@@ -9,6 +9,7 @@ import JoboonjaNavBar from '../components/partails/JoboonjaNavBar.js';
 import ProjectCard from '../components/partails/home/project_card.js'
 import ProjectDispatcher from '../req_dispatcher/project_dispatcher.js'
 import UserDispatcher from '../req_dispatcher/user_dispatcher.js'
+import UserCard from './partails/home/user_card';
 export default class Home extends React.Component {
     state = {
         currentID: "",
@@ -53,22 +54,8 @@ export default class Home extends React.Component {
                                     </div>
                                 </div>
                                 {users.map(user => {
-                                    const { id, firstName, lastName, jobTitle, PictureUrl } = user;
-                                    var hasImage = true;
-                                    if (PictureUrl == null) {
-                                        hasImage = false;
-                                    }
                                     return (
-                                        <a href={"http://localhost:3000/user/" + id}>
-                                            <div className="bg-white rounded-corners shadow d-flex flex-row align-items-center mb-1">
-                                                <img src={(hasImage) ? PictureUrl : '../assets/pictures/profile/noImage.png'}
-                                                    className="home-sidebard-img m-2 rounded-corners" />
-                                                <div className="d-flex flex-column justify-content-center">
-                                                    <p className="iranSans text-body mb-0">{firstName + " " + lastName}</p>
-                                                    <p className="iranSans text-muted mb-0 mt-1">{jobTitle}</p>
-                                                </div>
-                                            </div>
-                                        </a>
+                                        <UserCard user={user}></UserCard>
                                     );
                                 }
                                 )}
