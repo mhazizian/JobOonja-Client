@@ -8,6 +8,8 @@ import JoboonjaNavBar from '../components/partails/JoboonjaNavBar.js';
 import ProjectDispatcher from '../req_dispatcher/project_dispatcher.js'
 import TimeConversion from '../utils/time_conversion'
 import SkillTag from './partails/skill_tag';
+import Utils from '../utils/genreal_utils.js'
+import swal from 'sweetalert';
 
 export default class Project extends React.Component {
 
@@ -35,14 +37,22 @@ export default class Project extends React.Component {
         });
     }
     sendAmountBid() {
-        new ProjectDispatcher().sendAmountBid(
-            this.state.id,
-            this.state.bidMount
-        );
+        if (!new Utils().isPositiveInteger(this.state.bidMount)) {
+            swal("خطا!", "مقدار وارد شده باید عددی مثبت باشد.", "error");    
+        } else if (this.state.bidMount > this.state.budget) {
+            swal("خطا!", "بودجه درخواستی شما بسیار زیاد است!", "error");
+        } else {
+
+            new ProjectDispatcher().sendAmountBid(
+                this.state.id,
+                this.state.bidMount
+            );
+        }
     }
     render() {
         const { id, title, description, imageUrl, budget, skills, deadline, winner, hasBided, bidMount, currentID } = this.state;
-        var deltaTime = deadline - Date.now();
+        // var deltaTime = deadline - Date.now();
+        var deltaTime = deadline;
         var deadProject = deltaTime < 0;
         var projectHasBided = hasBided;
         var currentUserLinkValue = "http://localhost:3000/user/" + currentID;
@@ -56,7 +66,7 @@ export default class Project extends React.Component {
             <React.Fragment>
                 <div id="main-div">
                     <JoboonjaNavBar currentUserLink={currentUserLinkValue}></JoboonjaNavBar>
-                    <div className="bg-light-blue" id="div-bg-blue-light"></div>
+                    <div className="bg-light-blue" id="div-bg-blue-light-small"></div>
 
                     <div className="container d-flex flex-column mb-5">
                         <div className="card d-flex flex-column shadow mb-5 rounded-corners" id="content">
@@ -71,7 +81,7 @@ export default class Project extends React.Component {
                                             <h1 className="iranSans m-0">{title}</h1>
                                         </div>
 
-                                        <div>
+                                        <div className="mt-2">
                                             {
                                                 deadProject ? (
                                                     <div>
@@ -91,7 +101,7 @@ export default class Project extends React.Component {
                                                     )
                                             }
                                         </div>
-                                        <div>
+                                        <div className="mt-2">
                                             <p className="iranSans text-info mb-0">
                                                 <i className="mr-1 flaticon-money-bag"></i>
                                                 بودجه: {budget} تومان
@@ -131,15 +141,10 @@ export default class Project extends React.Component {
                                     </div>
                                     <div className="align-self-end mt-3" id="project-skill">
                                         {skills.map(skill => {
-                                            // const { name, point } = skill;
                                             return (
                                                 <SkillTag
-                                                    // isLoggedIn={false}
-                                                    // hasEndorsed={false}
                                                     skill={skill}
                                                     isReadOnly={true}
-                                                    // userId={this.state.id}
-                                                    // currentUserId={this.state.currentID}
                                                 ></SkillTag>
                                             );
                                         })

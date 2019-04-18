@@ -46,7 +46,7 @@ export default class User extends React.Component {
             <React.Fragment>
                 <div id="main-div">
                     <JoboonjaNavBar currentUserLink={currentUserLinkValue}></JoboonjaNavBar>
-                    <div className="bg-light-blue" id="div-bg-blue-light"></div>
+                    <div className="bg-light-blue" id="div-bg-blue-light-small"></div>
 
                     <div className="container d-flex flex-column mb-5">
                         <div className="d-flex flex-column" id="content">
@@ -79,17 +79,6 @@ export default class User extends React.Component {
                                         <h3 className="iranSans mr-3">مهارت ها:</h3>
                                         <div className="card d-flex flex-row bg-white p-1">
                                             <SkillList skills={otherSkills} userId={this.state.id}></SkillList>
-
-                                            {/* <button className="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton"
-                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    <span className="iranSans pr-5">-- انتخاب مهارت --</span>
-                                                </button>
-                                                <div className="dropdown-menu" aria-labelledby="dropdownMenuButton"> */}
-                                            {/* </div> */}
-                                            {/* </div> */}
-
-
-
                                         </div>
                                     </div>
                                 ) : (

@@ -26,7 +26,7 @@ export default class Home extends React.Component {
         return (
             <div>
                 <JoboonjaNavBar currentUserLink={currentUserLinkValue}></JoboonjaNavBar>
-                <div className="bg-light-blue" id="div-bg-blue-light"></div>
+                <div className="bg-light-blue" id="div-bg-blue-light-big"></div>
 
                 <div className="container d-flex flex-column mb-5">
                     <div className="d-flex flex-column rounded-corners">
@@ -36,11 +36,12 @@ export default class Home extends React.Component {
                                 لوازم ایپسوم متن ساختگی با سادگی نا مفهوم از صنعت چاپ وب با
                             </p>
                             <div className="d-flex flex-row bg-light dark-blue w-65 align-self-center shadow" id="border_bottom_style">
-                                <p
-                                    className="iranSans my-2 ml-2 text-muted font-weight-light flex-grow-1 align-self-center font-size-big">
-                                    جستجو در جاب‌اونجا
-                                </p>
-                                <div className="m-1 p-2 bg-dark-blue text-white iranSans">جستجو</div>
+                                <input
+                                    className="iranSans my-2 ml-2 text-muted font-weight-light flex-grow-1 align-self-center font-size-big border-0 bg-light form-control"
+                                    placeholder="جستجو در جاب‌اونجا"
+                                />
+
+                                <button className="m-1 p-2 bg-dark-blue text-white iranSans">جستجو</button>
                             </div>
 
                         </div>
@@ -48,7 +49,10 @@ export default class Home extends React.Component {
                             <div className="d-flex flex-column w-25">
                                 <div className="bg-white rounded-corners shadow d-flex flex-row align-items-center mb-2">
                                     <div className="m-1 bg-light w-100">
-                                        <p className="iranSans my-2 ml-3 text-muted">جستجو نام کاربر</p>
+                                        <input 
+                                        className="iranSans my-2 text-muted form-control bg-light border-0"
+                                        placeholder="جستجو نام کاربر"
+                                        />
                                     </div>
                                 </div>
                                 {users.map(user => {
