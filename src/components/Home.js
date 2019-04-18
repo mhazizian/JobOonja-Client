@@ -16,19 +16,7 @@ export default class Home extends React.Component {
         users: []
     };
     getdata() {
-        axios.get('http://localhost:8080/Proj_IE/project')
-        .then(
-            response =>
-            this.setState ({
-                currentID: JSON.parse(response.data.details).currentID,
-                projects: JSON.parse(response.data.message),
-            })
-        )
-        .catch(
-            function(error) {
-                console.log(error.stack);
-            }
-        )
+        new ProjectDispatcher().getProjects(this)
         axios.get('http://localhost:8080/Proj_IE/user')
         .then(
             response =>
