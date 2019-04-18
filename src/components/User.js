@@ -10,6 +10,7 @@ import Footer from '../components/partails/Footer.js';
 import JoboonjaNavBar from '../components/partails/JoboonjaNavBar.js';
 import UserDispatcher from '../req_dispatcher/user_dispatcher';
 import SkillList from './partails/user/skill_list';
+import SkillTag from './partails/skill_tag';
 require("bootstrap");
 
 export default class User extends React.Component {
@@ -27,11 +28,9 @@ export default class User extends React.Component {
     };
     constructor() {
         super();
-        this.addEndorse = this.addEndorse.bind(this);
+        // this.addEndorse = this.addEndorse.bind(this);
     }
-    addEndorse(skillName) {
-        new UserDispatcher().endorseUser(this.state.id, this.state.currentID, skillName)
-    }
+    
     render() {
         const { id, firstName, lastName, jobTitle, PictureUrl, skills, bio, currentID, otherSkills, endorseSkills } = this.state;
         var currentUserLinkValue = "http://localhost:3000/user/" + currentID;
@@ -106,20 +105,14 @@ export default class User extends React.Component {
                             }
                             <div className="align-self-end mt-3" id="project-skill">
                                 {skills.map(skill => {
-                                    const { name, point } = skill;
                                     return (
-                                        <div className="d-inline-flex bg-white rounded-corners border-light shadow-sm">
-                                            <div className="m-1 px-1 text-body">
-                                                {
-                                                    (isCurrnet || endorseSkills.indexOf(name) >= 0) ? (
-                                                        <span className="iranSans badge bg-light-blue text-info py-2 px-2  my-0"> {point}</span>
-                                                    ) : (
-                                                            <button className="btn btn-success btn-sm" onClick={() => this.addEndorse(name)}> <i className="fas fa-plus"></i></button>
-                                                        )
-                                                }
-                                                {name}
-                                            </div>
-                                        </div>
+                                        <SkillTag
+                                            isLoggedIn={isCurrnet}
+                                            hasEndorsed={endorseSkills.indexOf(skill.name) >= 0}
+                                            skill={skill}
+                                            userId={this.state.id}
+                                            currentUserId={this.state.currentID}
+                                        ></SkillTag>
                                     );
                                 })
                                 }

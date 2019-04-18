@@ -133,14 +133,16 @@ export default class Project extends React.Component {
                                     </div>
                                     <div className="align-self-end mt-3" id="project-skill">
                                         {skills.map(skill => {
-                                            const { name, point } = skill;
+                                            // const { name, point } = skill;
                                             return (
-                                                <div className="d-inline-flex bg-white rounded-corners border-light shadow-sm">
-                                                    <div className="m-1 px-1 text-body">
-                                                        <span className="iranSans badge bg-light-blue text-info py-2 px-2  my-0"> {point}</span>
-                                                        {name}
-                                                    </div>
-                                                </div>
+                                                <SkillTag
+                                                    // isLoggedIn={false}
+                                                    // hasEndorsed={false}
+                                                    skill={skill}
+                                                    isReadOnly={true}
+                                                    // userId={this.state.id}
+                                                    // currentUserId={this.state.currentID}
+                                                ></SkillTag>
                                             );
                                         })
                                         }
