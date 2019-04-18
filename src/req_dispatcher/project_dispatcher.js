@@ -4,7 +4,7 @@ import * as ConfigManager from '../config/const.js';
 export default class ProjectDispatcher {
 
     getProjects(obj) {
-        axios.get(ConfigManager.SERVER_ADDRESS + 'project/')
+        axios.get(ConfigManager.SERVER_ADDRESS + 'project')
         .then(
             response =>
             obj.setState ({

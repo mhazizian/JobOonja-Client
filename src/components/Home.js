@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import '../fonts/iransans-fonts/fonts.scss';
 import '../fonts/flaticont/flaticon.css';
 import '../styles/all.css';
@@ -8,31 +7,20 @@ import '../styles/normilize.css';
 import '../styles/app.css';
 import Footer from '../components/partails/Footer.js';
 import JoboonjaNavBar from '../components/partails/JoboonjaNavBar.js';
-
+import ProjectDispatcher from '../req_dispatcher/project_dispatcher.js'
+import UserDispatcher from '../req_dispatcher/user_dispatcher.js'
 export default class Home extends React.Component {
     state = {
         currentID: "",
         projects: [],
         users: []
     };
-    getdata() {
-        new ProjectDispatcher().getProjects(this)
-        axios.get('http://localhost:8080/Proj_IE/user')
-        .then(
-            response =>
-            this.setState ({
-                users: response.data
-            })
-        )
-        .catch(
-            function(error) {
-                console.log(error.stack);
-            }
-        )
-    }
+
     componentDidMount() {
-        this.getdata();
+        new ProjectDispatcher().getProjects(this);
+        new UserDispatcher().getUsers(this);
     }
+
     render() {
         const {currentID, projects, users} = this.state;
         var currentUserLinkValue = "http://localhost:3000/user/" + currentID;
