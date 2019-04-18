@@ -7,7 +7,7 @@ import '../styles/normilize.css';
 import '../styles/app.css';
 import Footer from '../components/partails/Footer.js';
 import JoboonjaNavBar from '../components/partails/JoboonjaNavBar.js';
-import ProjectCard  from '../components/partails/home/project_card.js'
+import ProjectCard from '../components/partails/home/project_card.js'
 import ProjectDispatcher from '../req_dispatcher/project_dispatcher.js'
 import UserDispatcher from '../req_dispatcher/user_dispatcher.js'
 export default class Home extends React.Component {
@@ -23,9 +23,9 @@ export default class Home extends React.Component {
     }
 
     render() {
-        const {currentID, projects, users} = this.state;
+        const { currentID, projects, users } = this.state;
         var currentUserLinkValue = "http://localhost:3000/user/" + currentID;
-        return(
+        return (
             <div>
                 <JoboonjaNavBar currentUserLink={currentUserLinkValue}></JoboonjaNavBar>
                 <div className="bg-light-blue" id="div-bg-blue-light"></div>
@@ -53,92 +53,43 @@ export default class Home extends React.Component {
                                         <p className="iranSans my-2 ml-3 text-muted">جستجو نام کاربر</p>
                                     </div>
                                 </div>
-                                {users.map(user =>
-                                    {
-                                        const {id, firstName, lastName, jobTitle, PictureUrl} = user;
-                                        var hasImage = true;
-                                        if(PictureUrl == null) {
-                                            hasImage = false;
-                                        }
-                                        return(
-                                            <a href={"http://localhost:3000/user/" + id}>
-                                                <div className="bg-white rounded-corners shadow d-flex flex-row align-items-center mb-1">
-                                                    <img src={(hasImage)?PictureUrl:'../assets/pictures/profile/noImage.png'}
-                                                        className="home-sidebard-img m-2 rounded-corners" />
-                                                    <div className="d-flex flex-column justify-content-center">
-                                                        <p className="iranSans text-body mb-0">{firstName + " " + lastName}</p>
-                                                        <p className="iranSans text-muted mb-0 mt-1">{jobTitle}</p>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        );
+                                {users.map(user => {
+                                    const { id, firstName, lastName, jobTitle, PictureUrl } = user;
+                                    var hasImage = true;
+                                    if (PictureUrl == null) {
+                                        hasImage = false;
                                     }
+                                    return (
+                                        <a href={"http://localhost:3000/user/" + id}>
+                                            <div className="bg-white rounded-corners shadow d-flex flex-row align-items-center mb-1">
+                                                <img src={(hasImage) ? PictureUrl : '../assets/pictures/profile/noImage.png'}
+                                                    className="home-sidebard-img m-2 rounded-corners" />
+                                                <div className="d-flex flex-column justify-content-center">
+                                                    <p className="iranSans text-body mb-0">{firstName + " " + lastName}</p>
+                                                    <p className="iranSans text-muted mb-0 mt-1">{jobTitle}</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    );
+                                }
                                 )}
                             </div>
                             <div className="d-flex flex-column w-75 ml-4">
-                                {projects.map(project =>
-                                    {
-                                        // const {id,title, description, imageUrl, budget, skills, deadline, winner} = project;
-                                        // var deltaTime = deadline - Date.now();
-                                        // var deadProject = deltaTime < 0;
-                                        // var hasImage = true;
-                                        // if(imageUrl == null) {
-                                        //     hasImage = false;
-                                        // }
+                                {
+                                    projects.map(project => {
                                         return (
                                             <ProjectCard project={project}></ProjectCard>
-                                            
-                                            // <a href={"http://localhost:3000/project/" + id}>
-                                            //     <div className="bg-white d-flex flex-row rounded-corners mx-2 p-3 shadow">
-                                            //         <img src={(hasImage)?imageUrl:'../assets/pictures/project/profile1.png'}
-                                            //             className="img-fluid border rounded-corners home-list-project-img"/>
-                                            //         <div className="d-flex flex-column w-100 px-3 pt-2">
-                                            //             <div className="d-flex flex-row w-100 align-items-start mb-1">
-                                            //                 <h5 className="iranSans mr-auto">{title}</h5>
-                                            //                 {
-                                            //                     deadProject?(
-                                            //                         <div className="bg-info rounded-corners px-1">
-                                            //                             <p className="iranSans text-light font-size-small mb-0">مهلت تمام شده</p>
-                                            //                         </div>
-                                            //                     ):(
-                                            //                         <div className="bg-light rounded-corners px-1">
-                                            //                             <p className="iranSans text-muted font-size-small mb-0">زمان باقی مانده:{convertMiliSecToDate(deltaTime)} </p>
-                                            //                         </div>
-                                            //                     )
-                                            //                 }
-                                            //             </div>
-                                            //             <div className="iranSans font-weight-light font-size-description mb-1">
-                                            //                 {description}
-                                            //             </div>
-                                            //             <div className="iranSans text-info font-weight-bold mb-1">بودجه: {budget} تومن</div>
-                                            //             <div className="d-flex flex-row align-items-center font-size-small">
-                                            //                 <div className="iranSans text-muted bo">مهارت ها:</div>
-                                            //                 {skills.map(skill=>
-                                            //                     {
-                                            //                         const{name} = skill;
-                                            //                         return(
-                                            //                             <div className="bg-light rounded-corners border p-1 ml-2">
-                                            //                                 <p className="iranSans text-muted font-weight-bold mb-0">{name}</p>
-                                            //                             </div>
-                                            //                         );
-                                            //                     }
-                                            //                 )}
-                                            //             </div>
-                                            //         </div>
-                                            //     </div>
-                                            // </a>
                                         );
-                                    }
-                                )
-                            }
+                                    })
+                                }
+                            </div>
                         </div>
+
                     </div>
-
                 </div>
-            </div>
 
-            <Footer></Footer>
-        </div>
-    );
-}
+                <Footer></Footer>
+            </div>
+        );
+    }
 }
