@@ -1,3 +1,4 @@
+"use strict";
 import React from 'react'
 import axios from 'axios';
 import '../fonts/iransans-fonts/fonts.scss';
@@ -9,6 +10,8 @@ import '../styles/app.css';
 import Popper from 'popper.js'
 import Footer from '../components/partails/Footer.js';
 import JoboonjaNavBar from '../components/partails/JoboonjaNavBar.js';
+import ProjectDispatcher from '../req_dispatcher/user_dispatcher'
+import UserDispatcher from '../req_dispatcher/user_dispatcher';
 require("bootstrap");
 
 export default class User extends React.Component {
@@ -30,20 +33,10 @@ export default class User extends React.Component {
         this.addEndorse = this.addEndorse.bind(this);
     }
     addEndorse(skillName) {
-        endorseUser(this.state.id, this.state.currentID, skillName)
+        new UserDispatcher().endorseUser(this.state.id, this.state.currentID, skillName)
     }
-    addSkill(name) {
-        axios({
-            method: 'post',
-            url: 'http://localhost:8080/Proj_IE/addSkillUser?user=' + this.state.id + '&skill=' + name
-        })
-        .then(function(response) {
-            // alert(response);
-            window.location.reload();
-        })
-        .catch(function(response) {
-            // alert(response);
-        })
+    addSkill(skillName) {
+        new UserDispatcher().addSkill(this.state.id, skillName)
     }
     render() {
         const {id, firstName, lastName, jobTitle, PictureUrl, skills, bio, currentID, otherSkills, endorseSkills} = this.state;
@@ -148,33 +141,11 @@ export default class User extends React.Component {
             </React.Fragment>
         );
     }
-    getUser(userID){
-        axios.get('http://localhost:8080/Proj_IE/user/' + userID)
-        .then(
-            response =>
-            this.setState ({
-                id: JSON.parse(response.data.message).id,
-                firstName: JSON.parse(response.data.message).firstName,
-                lastName: JSON.parse(response.data.message).lastName,
-                jobTitle: JSON.parse(response.data.message).jobTitle,
-                PictureUrl: JSON.parse(response.data.message).PictureUrl,
-                skills: JSON.parse(response.data.message).skills,
-                bio: JSON.parse(response.data.message).bio,
-                currentID: JSON.parse(response.data.details).currentID,
-                otherSkills: JSON.parse(response.data.details).otherSkills,
-                endorseSkills: JSON.parse(response.data.details).endorseSkills
-            })
-        )
-        .catch(
-            function(error) {
-                console.log(error.stack);
-            }
-        )
-    }
+
     componentDidMount() {
         var currentURL = window.location.href;
         var splitURL = currentURL.split("/");
         var userID = splitURL[splitURL.length - 1];
-        this.getUser(userID);
+        new UserDispatcher().getUser(userID, this);
     }
 }
