@@ -9,8 +9,8 @@ export default class ProjectDispatcher {
         .then(
             response =>
             obj.setState ({
-                currentID: JSON.parse(response.data.details).currentID,
-                projects: JSON.parse(response.data.message),
+                currentID: response.data.details.currentID,
+                projects: response.data.message,
             })
         )
         .catch(
@@ -25,16 +25,16 @@ export default class ProjectDispatcher {
             .then(function (response) {
 
                 obj.setState({
-                    id: JSON.parse(response.data.message).id,
-                    title: JSON.parse(response.data.message).title,
-                    description: JSON.parse(response.data.message).description,
-                    imageUrl: JSON.parse(response.data.message).imageUrl,
-                    budget: JSON.parse(response.data.message).budget,
-                    skills: JSON.parse(response.data.message).skills,
-                    deadline: JSON.parse(response.data.message).deadline,
-                    winner: JSON.parse(response.data.message).winner,
-                    hasBided: JSON.parse(response.data.details).hasBided,
-                    currentID: JSON.parse(response.data.details).currentID
+                    id: response.data.message.id,
+                    title: response.data.message.title,
+                    description: response.data.message.description,
+                    imageUrl: response.data.message.imageUrl,
+                    budget: response.data.message.budget,
+                    skills: response.data.message.skills,
+                    deadline: response.data.message.deadline,
+                    winner: response.data.message.winner,
+                    hasBided: response.data.details.hasBided,
+                    currentID: response.data.details.currentID
                 });
             }
             )

@@ -8,16 +8,16 @@ export default class UserDispatcher {
             .then(
                 response =>
                     obj.setState({
-                        id: JSON.parse(response.data.message).id,
-                        firstName: JSON.parse(response.data.message).firstName,
-                        lastName: JSON.parse(response.data.message).lastName,
-                        jobTitle: JSON.parse(response.data.message).jobTitle,
-                        PictureUrl: JSON.parse(response.data.message).PictureUrl,
-                        skills: JSON.parse(response.data.message).skills,
-                        bio: JSON.parse(response.data.message).bio,
-                        currentID: JSON.parse(response.data.details).currentID,
-                        otherSkills: JSON.parse(response.data.details).otherSkills,
-                        endorseSkills: JSON.parse(response.data.details).endorseSkills
+                        id: response.data.message.id,
+                        firstName: response.data.message.firstName,
+                        lastName: response.data.message.lastName,
+                        jobTitle: response.data.message.jobTitle,
+                        PictureUrl: response.data.message.PictureUrl,
+                        skills: response.data.message.skills,
+                        bio: response.data.message.bio,
+                        currentID: response.data.details.currentID,
+                        otherSkills: response.data.details.otherSkills,
+                        endorseSkills: response.data.details.endorseSkills
                     })
             )
             .catch(
