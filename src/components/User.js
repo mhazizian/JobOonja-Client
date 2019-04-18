@@ -1,6 +1,5 @@
 "use strict";
 import React from 'react'
-import axios from 'axios';
 import '../fonts/iransans-fonts/fonts.scss';
 import '../fonts/flaticont/flaticon.css';
 import '../styles/all.css';
