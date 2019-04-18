@@ -10,7 +10,7 @@ import Popper from 'popper.js'
 import Footer from '../components/partails/Footer.js';
 import JoboonjaNavBar from '../components/partails/JoboonjaNavBar.js';
 import UserDispatcher from '../req_dispatcher/user_dispatcher';
-import SkillList from './user/skill_list';
+import SkillList from './partails/user/skill_list';
 require("bootstrap");
 
 export default class User extends React.Component {
