@@ -1,4 +1,5 @@
 import axios from 'axios';
+import ErrorHandler from '../utils/error_handler.js'
 import * as ConfigManager from '../config/const.js';
 
 export default class ProjectDispatcher {
@@ -14,7 +15,7 @@ export default class ProjectDispatcher {
         )
         .catch(
             function(error) {
-                console.log(error.stack);
+                new ErrorHandler().handelError(error);
             }
         )
     }
@@ -39,7 +40,7 @@ export default class ProjectDispatcher {
             )
             .catch(
                 function (error) {
-                    console.log(error.stack);
+                    new ErrorHandler().handelError(error);
                 }
             )
     }
@@ -50,11 +51,10 @@ export default class ProjectDispatcher {
             url:  ConfigManager.SERVER_ADDRESS + 'bid' + '?bidAmount=' + bidMount + '&projectId=' + projectId
         })
             .then(function (response) {
-                // alert(response);
                 window.location.reload();
             })
-            .catch(function (response) {
-                // alert(response);
+            .catch(function (error) {
+                new ErrorHandler().handelError(error);
             })
     }
 }
