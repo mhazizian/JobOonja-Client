@@ -1,6 +1,6 @@
 import React from 'react'
 import TimeConversion from '../../../utils/time_conversion.js'
-import SkillTag from './skill_tag.js';
+import SkillTagSimple from './skill_tag_simple.js';
 
 export default class ProjectCard extends React.Component {
     render() {
@@ -41,7 +41,7 @@ export default class ProjectCard extends React.Component {
                             <div className="iranSans text-muted bo">مهارت ها:</div>
                             {skills.map(skill => {
                                 return (
-                                    <SkillTag skill={skill}></SkillTag>
+                                    <SkillTagSimple skill={skill}></SkillTagSimple>
                                 );
                             }
                             )}

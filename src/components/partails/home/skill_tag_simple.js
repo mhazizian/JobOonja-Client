@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default class SkillTag extends React.Component {
+export default class SkillTagSimple extends React.Component {
     render() {
         var skill = this.props.skill;
         const { name } = skill;
