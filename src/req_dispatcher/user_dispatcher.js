@@ -26,7 +26,7 @@ export default class UserDispatcher {
         )
     }
 
-    gerUsers(obj) {
+    getUsers(obj) {
         axios.get(ConfigManager.SERVER_ADDRESS + 'user')
         .then(
             response =>
@@ -58,6 +58,20 @@ export default class UserDispatcher {
         axios({
             method: 'post',
             url: ConfigManager.SERVER_ADDRESS + 'addSkillUser' + '?user=' + userId + '&skill=' + skillName
+        })
+        .then(function(response) {
+            // alert(response);
+            window.location.reload();
+        })
+        .catch(function(response) {
+            // alert(response);
+        })
+    }
+
+    deleteSkill(currentUserID,  skillName) {
+        axios({
+            method: 'post',
+            url: ConfigManager.SERVER_ADDRESS + 'deleteSkillUser' + '?user=' + currentUserID + '&skill=' + skillName
         })
         .then(function(response) {
             // alert(response);
