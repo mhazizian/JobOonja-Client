@@ -7,6 +7,7 @@ import '../styles/normilize.css';
 import '../styles/app.css';
 import Footer from '../components/partails/Footer.js';
 import JoboonjaNavBar from '../components/partails/JoboonjaNavBar.js';
+import ProjectCard  from '../components/partails/home/project_card.js'
 import ProjectDispatcher from '../req_dispatcher/project_dispatcher.js'
 import UserDispatcher from '../req_dispatcher/user_dispatcher.js'
 export default class Home extends React.Component {
@@ -77,53 +78,55 @@ export default class Home extends React.Component {
                             <div className="d-flex flex-column w-75 ml-4">
                                 {projects.map(project =>
                                     {
-                                        const {id,title, description, imageUrl, budget, skills, deadline, winner} = project;
-                                        var deltaTime = deadline - Date.now();
-                                        var deadProject = deltaTime < 0;
-                                        var hasImage = true;
-                                        if(imageUrl == null) {
-                                            hasImage = false;
-                                        }
+                                        // const {id,title, description, imageUrl, budget, skills, deadline, winner} = project;
+                                        // var deltaTime = deadline - Date.now();
+                                        // var deadProject = deltaTime < 0;
+                                        // var hasImage = true;
+                                        // if(imageUrl == null) {
+                                        //     hasImage = false;
+                                        // }
                                         return (
-                                            <a href={"http://localhost:3000/project/" + id}>
-                                                <div className="bg-white d-flex flex-row rounded-corners mx-2 p-3 shadow">
-                                                    <img src={(hasImage)?imageUrl:'../assets/pictures/project/profile1.png'}
-                                                        className="img-fluid border rounded-corners home-list-project-img"/>
-                                                    <div className="d-flex flex-column w-100 px-3 pt-2">
-                                                        <div className="d-flex flex-row w-100 align-items-start mb-1">
-                                                            <h5 className="iranSans mr-auto">{title}</h5>
-                                                            {
-                                                                deadProject?(
-                                                                    <div className="bg-info rounded-corners px-1">
-                                                                        <p className="iranSans text-light font-size-small mb-0">مهلت تمام شده</p>
-                                                                    </div>
-                                                                ):(
-                                                                    <div className="bg-light rounded-corners px-1">
-                                                                        <p className="iranSans text-muted font-size-small mb-0">زمان باقی مانده:{convertMiliSecToDate(deltaTime)} </p>
-                                                                    </div>
-                                                                )
-                                                            }
-                                                        </div>
-                                                        <div className="iranSans font-weight-light font-size-description mb-1">
-                                                            {description}
-                                                        </div>
-                                                        <div className="iranSans text-info font-weight-bold mb-1">بودجه: {budget} تومن</div>
-                                                        <div className="d-flex flex-row align-items-center font-size-small">
-                                                            <div className="iranSans text-muted bo">مهارت ها:</div>
-                                                            {skills.map(skill=>
-                                                                {
-                                                                    const{name} = skill;
-                                                                    return(
-                                                                        <div className="bg-light rounded-corners border p-1 ml-2">
-                                                                            <p className="iranSans text-muted font-weight-bold mb-0">{name}</p>
-                                                                        </div>
-                                                                    );
-                                                                }
-                                                            )}
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </a>
+                                            <ProjectCard project={project}></ProjectCard>
+                                            
+                                            // <a href={"http://localhost:3000/project/" + id}>
+                                            //     <div className="bg-white d-flex flex-row rounded-corners mx-2 p-3 shadow">
+                                            //         <img src={(hasImage)?imageUrl:'../assets/pictures/project/profile1.png'}
+                                            //             className="img-fluid border rounded-corners home-list-project-img"/>
+                                            //         <div className="d-flex flex-column w-100 px-3 pt-2">
+                                            //             <div className="d-flex flex-row w-100 align-items-start mb-1">
+                                            //                 <h5 className="iranSans mr-auto">{title}</h5>
+                                            //                 {
+                                            //                     deadProject?(
+                                            //                         <div className="bg-info rounded-corners px-1">
+                                            //                             <p className="iranSans text-light font-size-small mb-0">مهلت تمام شده</p>
+                                            //                         </div>
+                                            //                     ):(
+                                            //                         <div className="bg-light rounded-corners px-1">
+                                            //                             <p className="iranSans text-muted font-size-small mb-0">زمان باقی مانده:{convertMiliSecToDate(deltaTime)} </p>
+                                            //                         </div>
+                                            //                     )
+                                            //                 }
+                                            //             </div>
+                                            //             <div className="iranSans font-weight-light font-size-description mb-1">
+                                            //                 {description}
+                                            //             </div>
+                                            //             <div className="iranSans text-info font-weight-bold mb-1">بودجه: {budget} تومن</div>
+                                            //             <div className="d-flex flex-row align-items-center font-size-small">
+                                            //                 <div className="iranSans text-muted bo">مهارت ها:</div>
+                                            //                 {skills.map(skill=>
+                                            //                     {
+                                            //                         const{name} = skill;
+                                            //                         return(
+                                            //                             <div className="bg-light rounded-corners border p-1 ml-2">
+                                            //                                 <p className="iranSans text-muted font-weight-bold mb-0">{name}</p>
+                                            //                             </div>
+                                            //                         );
+                                            //                     }
+                                            //                 )}
+                                            //             </div>
+                                            //         </div>
+                                            //     </div>
+                                            // </a>
                                         );
                                     }
                                 )
@@ -138,28 +141,4 @@ export default class Home extends React.Component {
         </div>
     );
 }
-}
-function convertMiliSecToDate(time) {
-    var year = Math.floor(time / (365 * 12 * 60 * 60 * 1000));
-    time = time - year * 365 * 12 * 60 * 60 * 1000;
-    var month = Math.floor(time / 30 / 12 / 60 / 60 / 1000);
-    time = time - month * 30 * 12 * 60 * 60 * 1000;
-    var today = Math.floor(time / 12 / 60 / 60 / 1000);
-    time = time - today * 12 * 60 * 60 * 1000;
-    var hour = Math.floor(time / 60 / 60 / 1000);
-    time = time - hour * 60 * 60 * 1000;
-    var minute = Math.floor(time / 60 / 1000);
-    time = time - minute * 60 * 1000;
-    var second = Math.floor(time / 1000);
-    if(year != 0) {
-        return year + " سال" + month + "ماه " + today + "روز " + hour + "ساعت " + minute + "دقیقه " + second + "ثانیه";
-    } else if(month != 0) {
-        return month + "ماه " + today + "روز " + hour + "ساعت " + minute + "دقیقه " + second + "ثانیه";
-    } else if(today != 0) {
-        return today + "روز " + hour + "ساعت " + minute + "دقیقه " + second + "ثانیه";
-    } else if(hour != 0) {
-        return hour + "ساعت " + minute + "دقیقه " + second + "ثانیه";
-    } else if(minute != 0) {
-        return second + "ثانیه";
-    }
 }
