@@ -1,11 +1,7 @@
 "use strict";
 import React from 'react'
-import '../styles/bootstrap.min.css';
-import '../styles/normilize.css';
-import '../styles/app.css';
 import Footer from '../components/partails/Footer.js';
 import JoboonjaNavBar from '../components/partails/JoboonjaNavBar.js';
-import UserDispatcher from '../req_dispatcher/user_dispatcher';
 
 require("bootstrap");
 
