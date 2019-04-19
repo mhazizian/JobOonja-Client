@@ -4,6 +4,7 @@ import User from './components/User'
 import Project from './components/Project'
 import Home from './components/Home'
 import NotFound404 from './components/not_found404'
+import SignUp from './components/signup'
 // import App from './App';
 // import About from './About'
 // import { Router, Route, browserHistory } from 'react-router';
@@ -17,6 +18,7 @@ ReactDOM.render((
       <Route exact path="/" component={Home} />
       <Route path="/user/*" component={User} />
       <Route path="/project/*" component={Project} />
+      <Route path="/signup" component={SignUp} />
       <Route path='*' component={NotFound404} />
     </Switch>
 

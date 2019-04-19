@@ -38,7 +38,7 @@ export default class Project extends React.Component {
     }
     sendAmountBid() {
         if (!new Utils().isPositiveInteger(this.state.bidMount)) {
-            swal("خطا!", "مقدار وارد شده باید عددی مثبت باشد.", "error");    
+            swal("خطا!", "مقدار وارد شده باید عددی مثبت باشد.", "error");
         } else if (this.state.bidMount > this.state.budget) {
             swal("خطا!", "بودجه درخواستی شما بسیار زیاد است!", "error");
         } else {
@@ -162,7 +162,9 @@ export default class Project extends React.Component {
                                             </h4>
                                             <div className="d-flex d-inline-flex my-3">
                                                 <div className="input-group mx-2 rounded-corners border-info">
-                                                    <input type="text" name="bidMount" className="form-control iranSans text-muted border-blue border-right-0" value={this.state.bidMount} onChange={this.handleChange}
+                                                    <input type="text" name="bidMount" className="form-control iranSans text-muted border-blue border-right-0"
+                                                        value={this.state.bidMount}
+                                                        onChange={this.handleChange}
                                                         placeholder="پیشنهاد خود را وارد کنید" />
                                                     <div className="input-group-append">
                                                         <span
