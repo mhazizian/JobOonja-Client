@@ -19,8 +19,8 @@ ReactDOM.render((
       <Route exact path="/" component={Home} />
       <Route path="/user/*" component={User} />
       <Route path="/project/*" component={Project} />
-      <Route path="/signup" component={SignUp} />
-      <Route path="/login" component={Login} />
+      <Route exact path="/signup" component={SignUp} />
+      <Route exact path="/login" component={Login} />
       <Route path='*' component={NotFound404} />
     </Switch>
 
