@@ -5,6 +5,7 @@ import Project from './components/Project'
 import Home from './components/Home'
 import NotFound404 from './components/not_found404'
 import SignUp from './components/signup'
+import Login from './components/login'
 // import App from './App';
 // import About from './About'
 // import { Router, Route, browserHistory } from 'react-router';
@@ -19,6 +20,7 @@ ReactDOM.render((
       <Route path="/user/*" component={User} />
       <Route path="/project/*" component={Project} />
       <Route path="/signup" component={SignUp} />
+      <Route path="/login" component={Login} />
       <Route path='*' component={NotFound404} />
     </Switch>
 
