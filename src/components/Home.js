@@ -12,12 +12,38 @@ export default class Home extends React.Component {
     state = {
         currentID: "",
         projects: [],
-        users: []
+        users: [],
+        projectName: null,
+        userName: null
     };
 
     componentDidMount() {
         new ProjectDispatcher().getProjects(this);
         new UserDispatcher().getUsers(this);
+    }
+
+    constructor() {
+        super();
+        this.searchByProjectName = this.searchByProjectName.bind(this);
+        this.searchByUserName = this.searchByUserName.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    handleChange({ target }) {
+        this.setState({
+            [target.name]: target.value
+        });
+    }
+
+    searchByProjectName() {
+        new ProjectDispatcher().searchProjects(this);
+    }
+
+    searchByUserName({ target }) {
+        this.setState({
+            [target.name]: target.value
+        });
+        new UserDispatcher().searchUser(this, target.value);
     }
 
     render() {
@@ -39,9 +65,12 @@ export default class Home extends React.Component {
                                 <input
                                     className="iranSans my-2 ml-2 text-muted font-weight-light flex-grow-1 align-self-center font-size-big border-0 bg-light form-control"
                                     placeholder="جستجو در جاب‌اونجا"
+                                    value={this.state.projectName}
+                                    onChange={this.handleChange}
+                                    name="projectName"
                                 />
 
-                                <button className="m-1 p-2 bg-dark-blue text-white iranSans">جستجو</button>
+                            <button className="m-1 p-2 bg-dark-blue text-white iranSans" onClick={this.searchByProjectName}>جستجو</button>
                             </div>
 
                         </div>
@@ -49,9 +78,12 @@ export default class Home extends React.Component {
                             <div className="d-flex flex-column w-25">
                                 <div className="bg-white rounded-corners shadow d-flex flex-row align-items-center mb-2">
                                     <div className="m-1 bg-light w-100">
-                                        <input 
+                                        <input
+                                        name="userName"
                                         className="iranSans my-2 text-muted form-control bg-light border-0"
                                         placeholder="جستجو نام کاربر"
+                                        value={this.state.UserName}
+                                        onChange={this.searchByUserName}
                                         />
                                     </div>
                                 </div>

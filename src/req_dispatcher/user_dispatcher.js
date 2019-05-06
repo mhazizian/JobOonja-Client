@@ -41,6 +41,21 @@ export default class UserDispatcher {
             )
     }
 
+    searchUser(obj, name) {
+        axios.get(ConfigManager.SERVER_ADDRESS + 'user?name=' + name)
+        .then(
+            response =>
+            obj.setState ({
+                users: response.data
+            })
+        )
+        .catch(
+            function(error) {
+                new ErrorHandler().handelError(error);
+            }
+        )
+    }
+
     endorseUser(userId, currentUserID, skillName) {
         axios({
             method: 'post',

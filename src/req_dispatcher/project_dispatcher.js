@@ -20,6 +20,22 @@ export default class ProjectDispatcher {
         )
     }
 
+    searchProjects(obj) {
+        axios.get(ConfigManager.SERVER_ADDRESS + 'project?name=' + obj.state.projectName)
+        .then(
+            response =>
+            obj.setState ({
+                currentID: response.data.details.currentID,
+                projects: response.data.message,
+            })
+        )
+        .catch(
+            function(error) {
+                new ErrorHandler().handelError(error);
+            }
+        )
+    }
+
     getProject(procjetID, obj) {
         axios.get(ConfigManager.SERVER_ADDRESS + 'project/' + procjetID)
             .then(function (response) {
