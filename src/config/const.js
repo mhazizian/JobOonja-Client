@@ -1,1 +1,2 @@
-export const SERVER_ADDRESS = "http://127.0.0.1:8084/Proj_IE/"
+export const SERVER_ADDRESS = "http://127.0.0.1:8080/Proj_IE/"
+export const CLIENT_ADDRESS = "http://127.0.0.1:3000"
