@@ -1,10 +1,12 @@
 import axios from 'axios';
 import ErrorHandler from '../utils/error_handler.js'
 import * as ConfigManager from '../config/const.js';
-import JWTHeader from '../login_tool/JWTHeader'
 export default class UserDispatcher {
     getUser(userID, obj) {
-        axios.get(ConfigManager.SERVER_ADDRESS + 'user/' + userID)
+        const headers = {
+          'jwtHeader': localStorage.getItem('jwtToken')
+        };
+        axios.get(ConfigManager.SERVER_ADDRESS + 'user/' + userID, {headers})
         .then(
             response =>
             obj.setState({
@@ -28,14 +30,10 @@ export default class UserDispatcher {
     }
 
     getUsers(obj) {
-        axios.get(
-            {
-                method: 'get',
-                url: ConfigManager.SERVER_ADDRESS + 'user',
-                headers:{
-                    jwtHeader: JWTHeader.jwtHeader
-                }
-            })
+        const headers = {
+          'jwtHeader': localStorage.getItem('jwtToken')
+        };
+        axios.get(ConfigManager.SERVER_ADDRESS + 'user', {headers})
         .then(
             response =>
             obj.setState({
@@ -49,14 +47,10 @@ export default class UserDispatcher {
     }
 
     searchUser(obj, name) {
-        axios.get(
-            {
-                method: 'get',
-                url: ConfigManager.SERVER_ADDRESS + 'user?name=' + name,
-                headers:{
-                    jwtHeader: JWTHeader.jwtHeader
-                }
-            })
+        const headers = {
+          'jwtHeader': localStorage.getItem('jwtToken')
+        };
+        axios.get(ConfigManager.SERVER_ADDRESS + 'user?name=' + name, {headers})
         .then(
             response =>
             obj.setState ({
@@ -71,13 +65,10 @@ export default class UserDispatcher {
     }
 
     endorseUser(userId, currentUserID, skillName) {
-        axios({
-            method: 'post',
-            url: ConfigManager.SERVER_ADDRESS + 'addEndorse' + '?userId=' + userId + '&currentUserId=' + currentUserID + '&skillName=' + skillName,
-            headers:{
-                jwtHeader: JWTHeader.jwtHeader
-            }
-        })
+        const headers = {
+          'jwtHeader': localStorage.getItem('jwtToken')
+        };
+        axios.post(ConfigManager.SERVER_ADDRESS + 'addEndorse' + '?userId=' + userId + '&currentUserId=' + currentUserID + '&skillName=' + skillName, null, {headers})
         .then(function (response) {
             // alert(response);
             window.location.reload();
@@ -88,15 +79,11 @@ export default class UserDispatcher {
     }
 
     addSkill(userId, skillName) {
-        axios({
-            method: 'post',
-            url: ConfigManager.SERVER_ADDRESS + 'addSkillUser' + '?user=' + userId + '&skill=' + skillName,
-            headers:{
-                jwtHeader: JWTHeader.jwtHeader
-            }
-        })
+        const headers = {
+          'jwtHeader': localStorage.getItem('jwtToken')
+        };
+        axios.post(ConfigManager.SERVER_ADDRESS + 'addSkillUser' + '?user=' + userId + '&skill=' + skillName, null, {headers})
         .then(function (response) {
-            // alert(response);
             window.location.reload();
         })
         .catch(function (error) {
@@ -105,13 +92,10 @@ export default class UserDispatcher {
     }
 
     deleteSkill(currentUserID, skillName) {
-        axios({
-            method: 'delete',
-            url: ConfigManager.SERVER_ADDRESS + 'deleteSkillUser' + '?user=' + currentUserID + '&skill=' + skillName,
-            headers:{
-                jwtHeader: JWTHeader.jwtHeader
-            }
-        })
+        const headers = {
+          'jwtHeader': localStorage.getItem('jwtToken')
+        };
+        axios.delete(ConfigManager.SERVER_ADDRESS + 'deleteSkillUser' + '?user=' + currentUserID + '&skill=' + skillName, {headers})
         .then(function (response) {
             // alert(response);
             window.location.reload();
@@ -144,9 +128,10 @@ export default class UserDispatcher {
             '&password=' + password
         })
         .then(function (response) {
-            JWTHeader.jwtHeader = response.data.details;
-            // alert(JWTHeader.jwtHeader);
-            // window.location.reload();
+            localStorage.setItem('jwtToken', response.data.details);
+            if(response.data.details != null) {
+                window.location.replace(ConfigManager.CLIENT_ADDRESS);
+            }
         })
         .catch(function (error) {
             new ErrorHandler().handelError(error);

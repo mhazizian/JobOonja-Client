@@ -5,14 +5,10 @@ import JWTHeader from '../login_tool/JWTHeader'
 export default class ProjectDispatcher {
 
     getProjects(obj) {
-        axios.get (
-            {
-                method: 'get',
-                url: ConfigManager.SERVER_ADDRESS + 'project',
-                headers:{
-                    jwtHeader: JWTHeader.jwtHeader
-                }
-            })
+        const headers = {
+          'jwtHeader': localStorage.getItem('jwtToken')
+        };
+        axios.get(ConfigManager.SERVER_ADDRESS + 'project', {headers})
         .then(
             response =>
             obj.setState ({
@@ -28,14 +24,10 @@ export default class ProjectDispatcher {
     }
 
     searchProjects(obj) {
-        axios.get(
-            {
-                method: 'get',
-                url: ConfigManager.SERVER_ADDRESS + 'project?name=' + obj.state.projectName,
-                headers:{
-                    jwtHeader: JWTHeader.jwtHeader
-                }
-            })
+        const headers = {
+          'jwtHeader': localStorage.getItem('jwtToken')
+        };
+        axios.get(ConfigManager.SERVER_ADDRESS + 'project?name=' + obj.state.projectName, {headers})
         .then(
             response =>
             obj.setState ({
@@ -51,16 +43,11 @@ export default class ProjectDispatcher {
     }
 
     getProject(procjetID, obj) {
-        axios.get(
-            {
-                method: 'get',
-                url: ConfigManager.SERVER_ADDRESS + 'project/' + procjetID,
-                headers:{
-                    jwtHeader: JWTHeader.jwtHeader
-                }
-            })
+        const headers = {
+          'jwtHeader': localStorage.getItem('jwtToken')
+        };
+        axios.get(ConfigManager.SERVER_ADDRESS + 'project/' + procjetID, {headers})
             .then(function (response) {
-
                 obj.setState({
                     id: response.data.message.id,
                     title: response.data.message.title,
@@ -83,13 +70,10 @@ export default class ProjectDispatcher {
     }
 
     sendAmountBid(projectId, bidMount) {
-        axios({
-            method: 'post',
-            url:  ConfigManager.SERVER_ADDRESS + 'bid' + '?bidAmount=' + bidMount + '&projectId=' + projectId,
-            headers:{
-                jwtHeader: JWTHeader.jwtHeader
-            }
-        })
+        const headers = {
+          'jwtHeader': localStorage.getItem('jwtToken')
+        };
+        axios.post(ConfigManager.SERVER_ADDRESS + 'bid' + '?bidAmount=' + bidMount + '&projectId=' + projectId, null, {headers})
             .then(function (response) {
                 window.location.reload();
             })
