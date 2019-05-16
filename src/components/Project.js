@@ -53,7 +53,7 @@ export default class Project extends React.Component {
         const { id, title, description, imageUrl, budget, skills, deadline, winner, hasBided, bidMount, currentID } = this.state;
         var deltaTime = deadline - Date.now();
         var deadProject = deltaTime < 0;
-        
+
         var projectHasBided = hasBided;
         var currentUserLinkValue = "http://localhost:3000/user/" + currentID;
         var hasImage = true;

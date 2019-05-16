@@ -7,7 +7,7 @@ import Footer from '../components/partails/Footer.js';
 import JoboonjaNavBar from '../components/partails/JoboonjaNavBar.js';
 import AbstractField from '../components/partails/abstractFiled';
 import swal from 'sweetalert';
-
+import UserDispatcher from '../req_dispatcher/user_dispatcher';
 require("bootstrap");
 
 export default class SignUp extends React.Component {
@@ -36,7 +36,8 @@ export default class SignUp extends React.Component {
         if (this.state.pass != this.state.pass_re) {
             swal("خطا!", "تکرار پسورد تطابق ندارد", "error");
         } else {
-            swal("تبریک", "به زودی ثبت نام میشید...", "success");
+            // swal("تبریک", "به زودی ثبت نام میشید...", "success");
+            new UserDispatcher().addUser(this.state.name, this.state.family_name, this.state.username, this.state.pass, this.state.job_title, this.state.profile_link, this.state.about_me);
         }
     }
 
