@@ -1,7 +1,7 @@
 import axios from 'axios';
 import ErrorHandler from '../utils/error_handler.js'
 import * as ConfigManager from '../config/const.js';
-
+import JWTHeader from '../login_tool/JWTHeader'
 export default class UserDispatcher {
     getUser(userID, obj) {
         axios.get(ConfigManager.SERVER_ADDRESS + 'user/' + userID)
@@ -28,7 +28,14 @@ export default class UserDispatcher {
     }
 
     getUsers(obj) {
-        axios.get(ConfigManager.SERVER_ADDRESS + 'user')
+        axios.get(
+            {
+                method: 'get',
+                url: ConfigManager.SERVER_ADDRESS + 'user',
+                headers:{
+                    jwtHeader: JWTHeader.jwtHeader
+                }
+            })
         .then(
             response =>
             obj.setState({
@@ -42,7 +49,14 @@ export default class UserDispatcher {
     }
 
     searchUser(obj, name) {
-        axios.get(ConfigManager.SERVER_ADDRESS + 'user?name=' + name)
+        axios.get(
+            {
+                method: 'get',
+                url: ConfigManager.SERVER_ADDRESS + 'user?name=' + name,
+                headers:{
+                    jwtHeader: JWTHeader.jwtHeader
+                }
+            })
         .then(
             response =>
             obj.setState ({
@@ -59,7 +73,10 @@ export default class UserDispatcher {
     endorseUser(userId, currentUserID, skillName) {
         axios({
             method: 'post',
-            url: ConfigManager.SERVER_ADDRESS + 'addEndorse' + '?userId=' + userId + '&currentUserId=' + currentUserID + '&skillName=' + skillName
+            url: ConfigManager.SERVER_ADDRESS + 'addEndorse' + '?userId=' + userId + '&currentUserId=' + currentUserID + '&skillName=' + skillName,
+            headers:{
+                jwtHeader: JWTHeader.jwtHeader
+            }
         })
         .then(function (response) {
             // alert(response);
@@ -73,7 +90,10 @@ export default class UserDispatcher {
     addSkill(userId, skillName) {
         axios({
             method: 'post',
-            url: ConfigManager.SERVER_ADDRESS + 'addSkillUser' + '?user=' + userId + '&skill=' + skillName
+            url: ConfigManager.SERVER_ADDRESS + 'addSkillUser' + '?user=' + userId + '&skill=' + skillName,
+            headers:{
+                jwtHeader: JWTHeader.jwtHeader
+            }
         })
         .then(function (response) {
             // alert(response);
@@ -87,7 +107,10 @@ export default class UserDispatcher {
     deleteSkill(currentUserID, skillName) {
         axios({
             method: 'delete',
-            url: ConfigManager.SERVER_ADDRESS + 'deleteSkillUser' + '?user=' + currentUserID + '&skill=' + skillName
+            url: ConfigManager.SERVER_ADDRESS + 'deleteSkillUser' + '?user=' + currentUserID + '&skill=' + skillName,
+            headers:{
+                jwtHeader: JWTHeader.jwtHeader
+            }
         })
         .then(function (response) {
             // alert(response);
@@ -108,6 +131,22 @@ export default class UserDispatcher {
         .then(function (response) {
             // alert(response);
             window.location.reload();
+        })
+        .catch(function (error) {
+            new ErrorHandler().handelError(error);
+        })
+    }
+
+    loginUser(username, password) {
+        axios({
+            method: 'post',
+            url: ConfigManager.SERVER_ADDRESS + 'loginUserRequestServlet' + '?username=' + username +
+            '&password=' + password
+        })
+        .then(function (response) {
+            JWTHeader.jwtHeader = response.data.details;
+            // alert(JWTHeader.jwtHeader);
+            // window.location.reload();
         })
         .catch(function (error) {
             new ErrorHandler().handelError(error);

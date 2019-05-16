@@ -7,7 +7,7 @@ import Footer from '../components/partails/Footer.js';
 import JoboonjaNavBar from '../components/partails/JoboonjaNavBar.js';
 import AbstractField from '../components/partails/abstractFiled';
 import swal from 'sweetalert';
-
+import UserDispatcher from '../req_dispatcher/user_dispatcher';
 require("bootstrap");
 
 export default class Login extends React.Component {
@@ -27,7 +27,8 @@ export default class Login extends React.Component {
     }
 
     SendLoginData() {
-        swal(":)", "به زودی", "success");
+        new UserDispatcher().loginUser(this.state.username, this.state.pass);
+        // swal(":)", "به زودی", "success");
     }
 
     render() {

@@ -1,11 +1,18 @@
 import axios from 'axios';
 import ErrorHandler from '../utils/error_handler.js'
 import * as ConfigManager from '../config/const.js';
-
+import JWTHeader from '../login_tool/JWTHeader'
 export default class ProjectDispatcher {
 
     getProjects(obj) {
-        axios.get(ConfigManager.SERVER_ADDRESS + 'project')
+        axios.get (
+            {
+                method: 'get',
+                url: ConfigManager.SERVER_ADDRESS + 'project',
+                headers:{
+                    jwtHeader: JWTHeader.jwtHeader
+                }
+            })
         .then(
             response =>
             obj.setState ({
@@ -21,7 +28,14 @@ export default class ProjectDispatcher {
     }
 
     searchProjects(obj) {
-        axios.get(ConfigManager.SERVER_ADDRESS + 'project?name=' + obj.state.projectName)
+        axios.get(
+            {
+                method: 'get',
+                url: ConfigManager.SERVER_ADDRESS + 'project?name=' + obj.state.projectName,
+                headers:{
+                    jwtHeader: JWTHeader.jwtHeader
+                }
+            })
         .then(
             response =>
             obj.setState ({
@@ -37,7 +51,14 @@ export default class ProjectDispatcher {
     }
 
     getProject(procjetID, obj) {
-        axios.get(ConfigManager.SERVER_ADDRESS + 'project/' + procjetID)
+        axios.get(
+            {
+                method: 'get',
+                url: ConfigManager.SERVER_ADDRESS + 'project/' + procjetID,
+                headers:{
+                    jwtHeader: JWTHeader.jwtHeader
+                }
+            })
             .then(function (response) {
 
                 obj.setState({
@@ -64,7 +85,10 @@ export default class ProjectDispatcher {
     sendAmountBid(projectId, bidMount) {
         axios({
             method: 'post',
-            url:  ConfigManager.SERVER_ADDRESS + 'bid' + '?bidAmount=' + bidMount + '&projectId=' + projectId
+            url:  ConfigManager.SERVER_ADDRESS + 'bid' + '?bidAmount=' + bidMount + '&projectId=' + projectId,
+            headers:{
+                jwtHeader: JWTHeader.jwtHeader
+            }
         })
             .then(function (response) {
                 window.location.reload();
