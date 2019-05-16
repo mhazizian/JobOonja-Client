@@ -1,12 +1,14 @@
 import React from 'react'
+import * as ConfigManager from '../../config/const.js';
 
 export default class JoboonjaNavBar extends React.Component {
+
     render() {
         return (
             <nav className="sticky-top navbar-light shadow-sm pt-1">
     			<div className="d-flex flex-row container">
     				<div className="justify-content-start">
-    					<a className="" href="http://localhost:3000">
+    					<a className="" href={ConfigManager.CLIENT_ADDRESS}>
     						<img src="../assets/logo/logo v1.png" className="navbar-item" alt=""/>
     					</a>
     				</div>
