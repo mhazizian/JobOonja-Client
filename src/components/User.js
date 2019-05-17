@@ -9,6 +9,7 @@ import JoboonjaNavBar from '../components/partails/JoboonjaNavBar.js';
 import UserDispatcher from '../req_dispatcher/user_dispatcher';
 import SkillList from './partails/user/skill_list';
 import SkillTag from './partails/skill_tag';
+import * as ConfigManager from '../config/const.js';
 require("bootstrap");
 
 export default class User extends React.Component {
@@ -30,6 +31,9 @@ export default class User extends React.Component {
     }
 
     render() {
+        if(localStorage.getItem('jwtToken') == null) {
+            window.location.replace(ConfigManager.CLIENT_ADDRESS + "/login");
+        }
         const { id, firstName, lastName, jobTitle, PictureUrl, skills, bio, currentID, otherSkills, endorseSkills } = this.state;
         var currentUserLinkValue = "http://localhost:3000/user/" + currentID;
         var isCurrnet;

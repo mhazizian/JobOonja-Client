@@ -8,6 +8,7 @@ import ProjectCard from '../components/partails/home/project_card.js'
 import ProjectDispatcher from '../req_dispatcher/project_dispatcher.js'
 import UserDispatcher from '../req_dispatcher/user_dispatcher.js'
 import UserCard from './partails/home/user_card';
+import * as ConfigManager from '../config/const.js';
 export default class Home extends React.Component {
     state = {
         currentID: "",
@@ -47,6 +48,10 @@ export default class Home extends React.Component {
     }
 
     render() {
+        console.log(localStorage.getItem('jwtToken'));
+        if(localStorage.getItem('jwtToken') == null) {
+            window.location.replace(ConfigManager.CLIENT_ADDRESS + "/login");
+        }
         const { currentID, projects, users } = this.state;
         var currentUserLinkValue = "http://localhost:3000/user/" + currentID;
         return (

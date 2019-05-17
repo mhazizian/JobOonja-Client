@@ -8,6 +8,7 @@ import JoboonjaNavBar from '../components/partails/JoboonjaNavBar.js';
 import AbstractField from '../components/partails/abstractFiled';
 import swal from 'sweetalert';
 import UserDispatcher from '../req_dispatcher/user_dispatcher';
+import * as ConfigManager from '../config/const.js';
 require("bootstrap");
 
 export default class Login extends React.Component {
@@ -32,7 +33,9 @@ export default class Login extends React.Component {
     }
 
     render() {
-
+        if(localStorage.getItem('jwtToken') != null) {
+            window.location.replace(ConfigManager.CLIENT_ADDRESS);
+        }
         return (
             <div>
                 <JoboonjaNavBar currentUserLink={"#"}></JoboonjaNavBar>

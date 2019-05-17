@@ -10,6 +10,7 @@ import TimeConversion from '../utils/time_conversion'
 import SkillTag from './partails/skill_tag';
 import Utils from '../utils/genreal_utils.js'
 import swal from 'sweetalert';
+import * as ConfigManager from '../config/const.js';
 
 export default class Project extends React.Component {
 
@@ -50,6 +51,9 @@ export default class Project extends React.Component {
         }
     }
     render() {
+        if(localStorage.getItem('jwtToken') == null) {
+            window.location.replace(ConfigManager.CLIENT_ADDRESS + "/login");
+        }
         const { id, title, description, imageUrl, budget, skills, deadline, winner, hasBided, bidMount, currentID } = this.state;
         var deltaTime = deadline - Date.now();
         var deadProject = deltaTime < 0;

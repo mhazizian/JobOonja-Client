@@ -3,6 +3,10 @@ import * as ConfigManager from '../../config/const.js';
 
 export default class JoboonjaNavBar extends React.Component {
 
+    logout() {
+        localStorage.removeItem("jwtToken");
+    }
+
     render() {
         return (
             <nav className="sticky-top navbar-light shadow-sm pt-1">
@@ -16,7 +20,7 @@ export default class JoboonjaNavBar extends React.Component {
     					<a className="nav-link iranSans text-body" href={this.props.currentUserLink}>
     						حساب کاربری
     					</a>
-    					<a className="nav-link iranSans text-body" href="#">
+    					<a className="nav-link iranSans text-body" href="#" onClick={this.logout}>
     						خروج
     					</a>
     				</div>

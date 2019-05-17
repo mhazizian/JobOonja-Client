@@ -1,7 +1,6 @@
 import axios from 'axios';
 import ErrorHandler from '../utils/error_handler.js'
 import * as ConfigManager from '../config/const.js';
-import JWTHeader from '../login_tool/JWTHeader'
 export default class ProjectDispatcher {
 
     getProjects(obj) {
