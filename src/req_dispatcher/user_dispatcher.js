@@ -114,7 +114,10 @@ export default class UserDispatcher {
         })
         .then(function (response) {
             // alert(response);
-            window.location.reload();
+            localStorage.setItem('jwtToken', response.data.details);
+            if(response.data.details != null) {
+                window.location.replace(ConfigManager.CLIENT_ADDRESS);
+            }
         })
         .catch(function (error) {
             new ErrorHandler().handelError(error);
