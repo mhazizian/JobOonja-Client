@@ -1,6 +1,5 @@
 import React from 'react'
-import TimeConversion from '../../../utils/time_conversion.js'
-import SkillTagSimple from './skill_tag_simple.js';
+import * as ConfigManager from '../../../config/const';
 
 export default class UserCard extends React.Component {
     render() {
@@ -10,7 +9,7 @@ export default class UserCard extends React.Component {
             hasImage = false;
         }
         return (
-            <a href={"http://localhost:3000/user/" + id}>
+            <a href={ConfigManager.CLIENT_ADDRESS + "/user/" + id}>
                 <div className="bg-white rounded-corners shadow d-flex flex-row align-items-center mb-1">
                     <img src={(hasImage) ? PictureUrl : '../assets/pictures/profile/noImage.png'}
                         className="home-sidebard-img m-2 rounded-corners" />

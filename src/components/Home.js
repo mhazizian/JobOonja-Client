@@ -53,7 +53,7 @@ export default class Home extends React.Component {
             window.location.replace(ConfigManager.CLIENT_ADDRESS + "/login");
         }
         const { currentID, projects, users } = this.state;
-        var currentUserLinkValue = "http://localhost:3000/user/" + currentID;
+        var currentUserLinkValue = ConfigManager.CLIENT_ADDRESS + "/user/" + currentID;
         return (
             <div>
                 <JoboonjaNavBar currentUserLink={currentUserLinkValue}></JoboonjaNavBar>

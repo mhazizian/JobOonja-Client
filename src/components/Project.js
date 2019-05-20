@@ -59,7 +59,7 @@ export default class Project extends React.Component {
         var deadProject = deltaTime < 0;
 
         var projectHasBided = hasBided;
-        var currentUserLinkValue = "http://localhost:3000/user/" + currentID;
+        var currentUserLinkValue = ConfigManager.CLIENT_ADDRESS + "/user/" + currentID;
         var hasImage = true;
         if (imageUrl == null) {
             hasImage = false;

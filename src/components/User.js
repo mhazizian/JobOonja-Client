@@ -31,11 +31,18 @@ export default class User extends React.Component {
     }
 
     render() {
-        if(localStorage.getItem('jwtToken') == null) {
+        if (localStorage.getItem('jwtToken') == null) {
+            console.log("jwt Token was null!!!!");
             window.location.replace(ConfigManager.CLIENT_ADDRESS + "/login");
         }
+        // if(localStorage.getItem('jwtToken') == null) {
+        //     console.log(localStorage.getItem('jwtToken'));
+
+        //     // window.location.replace(ConfigManager.CLIENT_ADDRESS + "/login");
+        // }
+
         const { id, firstName, lastName, jobTitle, PictureUrl, skills, bio, currentID, otherSkills, endorseSkills } = this.state;
-        var currentUserLinkValue = "http://localhost:3000/user/" + currentID;
+        var currentUserLinkValue = ConfigManager.CLIENT_ADDRESS + "/user/" + currentID;
         var isCurrnet;
         if (currentID == id) {
             isCurrnet = true;

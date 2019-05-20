@@ -1,4 +1,5 @@
 import React from 'react'
+import * as ConfigManager from '../../../config/const';
 import TimeConversion from '../../../utils/time_conversion.js'
 import SkillTagSimple from './skill_tag_simple.js';
 
@@ -19,7 +20,7 @@ export default class ProjectCard extends React.Component {
                     className="img-fluid border rounded-corners home-list-project-img" />
                 <div className="d-flex flex-column w-100 px-3 pt-2">
                     <div className="d-flex flex-row w-100 align-items-start mb-1">
-                        <a href={"http://localhost:3000/project/" + id} className="mr-auto text-body">
+                        <a href={ConfigManager.CLIENT_ADDRESS + "project/" + id} className="mr-auto text-body">
                             <h5 className="iranSans">{title}</h5>
                         </a>
                         {
